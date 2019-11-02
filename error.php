@@ -6,7 +6,7 @@
 
 </head>
 <body>
-	<?php include('nav.php'); ?>
+	<?php include('components/nav.php'); ?>
 	<div>
 		<div id="wrapper">
 				<h1>Error: 401 Unauthorized</h1>	

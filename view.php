@@ -12,10 +12,11 @@
 <html>
 <head>
 	<title>View Recent</title>
-	<link rel="stylesheet" type="text/css" href="view.css">
+<!--   <link rel="stylesheet" type="text/css" href="index.css"> -->
+    <link rel="stylesheet" type="text/css" href="view.css">
 </head>
 <body>
-	 <?php include('nav.php'); ?> 
+	 <?php include('components/nav.php'); ?> 
 
     <div id="wrapper">
     <h1>  This is where you can view the questions</h1>
@@ -25,7 +26,7 @@
       <?php $date = date_create( $row['date']) ?>
       <h3> <?= $row['title'] ?> </h3>
       <h5> <?= date_format($date,"F d, Y g:i a" ) ?>
-      <a href="update.php?id=<?=$row['id']?>">-edit</a></h5>
+      <a href="edit.php?id=<?=$row['id']?>">-edit</a></h5>
       <?php if(strlen($row['content']) > 200 ): ?>
         <?= substr($row['content'], 0, 200 ) . "... "; ?>
           <a href="post.php?id=<?= $row['id'] ?>" id="full-blog-link"> Read Full Post</a> 

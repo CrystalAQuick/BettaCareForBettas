@@ -1,7 +1,7 @@
 <nav>
     <ul>
         <li><a href="index.php">Home</a></li>       
-        <li><a href="index.php">FAQ</a></li>  
+        <li><a href="faq.php">FAQ</a></li>  
         <li><a href="betta.php">Betta Types</a></li>
          <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn">Formus</a>
@@ -13,3 +13,4 @@
   </li>     
     </ul>
 </nav>
+

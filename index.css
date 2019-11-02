@@ -54,3 +54,34 @@ li.dropdown {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+
+#wrapper {
+
+    width: 800px;
+    margin: 150px auto;
+    text-align: left;
+    padding: 20px;
+    background:  #262626;
+    opacity: 0.85;
+
+}
+
+h1{
+  color: white;
+}
+h3{
+  color: white;
+}
+h4{
+  color:  white;
+}

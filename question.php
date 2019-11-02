@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="questions.css">
 </head>
 <body>
-         <?php include('nav.php'); ?> 
+         <?php include('components/nav.php'); ?> 
     <div id="wrapper">
     <h1> This is the question page placeholder</h1>
         <form method="post" action="insert.php">
