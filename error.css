@@ -1,0 +1,103 @@
+#special{
+  text-align: left;
+  background:  #262626;
+  opacity: 0.85;
+  font-size: 25px;
+  color: white;
+
+
+}
+body{
+	background-image: url("indexMultRocks.jpg");
+	
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #262626;
+  opacity: 0.85;
+}
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: white; 
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: #7575a3;
+}
+
+li.dropdown {
+  display: inline-block;
+
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color:  #f0f0f5;
+  min-width: 160px;
+
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #a3a3c2;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+textarea {
+    height: 10em;
+    width: 55em;
+}
+
+#wrapper {
+
+    width: 800px;
+    margin: 150px auto;
+    text-align: left;
+    padding: 20px;
+    background:  #262626;
+    opacity: 0.85;
+
+}
+
+#indie{
+  background-color: white;
+}
+
+h1{
+
+	color: #f0f0f5;
+}
+
+input{
+	margin-bottom: 25px;
+}
+
+label{
+	color: red;
+
+}
+
+
+
+
