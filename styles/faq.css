@@ -1,6 +1,6 @@
 body{
-  background-image: url("indexMultRocks.jpg");
-  background-attachment: fixed;
+	background-image: url("images/indexMultRocks.jpg");
+	
 }
 
 ul {
@@ -55,9 +55,14 @@ li.dropdown {
   display: block;
 }
 
-textarea {
-    height: 10em;
-    width: 55em;
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
 }
 
 #wrapper {
@@ -71,28 +76,11 @@ textarea {
 
 }
 
-#indie{
-  background-color: white;
-}
-
 h1{
-
-  color: #f0f0f5;
-}
-
-h4{
-   color: black;
-}
-h2{
   color: white;
 }
-input{
-  margin-bottom: 25px;
-}
 
-label{
-  color: red;
+#indie{
+  background-color: white;
 
 }
-
-

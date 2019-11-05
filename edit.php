@@ -7,26 +7,18 @@
 
 	 // UPDATE quote if author, content and id are present in POST.
     if ($_POST && isset($_POST['submitUpdate']) && isset($_POST['title']) && isset($_POST['content']) && isset($_POST['id'])) {
-        // Sanitize user input to escape HTML entities and filter out dangerous characters.
-        // $date = date('Y-m-d'); 
-        // $insertDate = "INSERT INTO questions (dateUpdated) VALUES (NOW()) 
-        // WHERE id = :id";
-
-        // $insertDate = "INSERT INTO questions (dateUpdated) VALUES (NOW()) 
-        // ";
-        // $statementDate = $db->prepare($insertDate);
-        // $statementDate -> bindValue(':dateUpdated', $date);
-        // $statementDate->execute();
-
+        // Sanitize user input 
         $title  = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $id      = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
         
         if(strlen($title) >= 1  && strlen($content) >= 1){ 
-           
-// changed this around, might have to change it back
-            $date = date('YYYY-MM-DD'); 
-            $query     = "UPDATE questions SET title = :title, content = :content, :dateUpdated = GET_DATE() WHERE id = :id";
+            // creating the current date
+            $date = date('Y-m-d H:i:s');
+            // updating the table
+            $query     = "UPDATE questions SET title = :title, content = :content, 
+            dateUpdated = :dateUpdated WHERE id = :id";
+            
             $statement = $db->prepare($query);
             $statement->bindValue(':title', $title);        
             $statement->bindValue(':content', $content);
@@ -87,7 +79,6 @@
         $id = false; // False if we are not UPDATING or SELECTING.
         //header("Location: index.php");
     } 
-
 ?>
 
 
@@ -95,7 +86,7 @@
 <html lang="en">
 <head>
 	<title>Editing  - <?= $quote['title'] ?> </title>
-	 <link rel="stylesheet" type="text/css" href="question.css" />
+	 <link rel="stylesheet" type="text/css" href="styles/question.css" />
 </head>
 <body>
 	<?php include('components/nav.php'); ?>  
@@ -110,12 +101,10 @@
         <textarea id="contentInput" name="content" rows="20" cols="100"> <?= $quote['content']  ?></textarea> 
         <input id="submit" type="submit" value="update" name="submitUpdate">
 
-        <input type="submit" name="submitDelete" value="delete" >  
+        <input type="submit" name="submitDelete" value="delete" >       
     </form>
 	<?php endif ?>    	
 
     </div>
-
-
 </body>
 </html>

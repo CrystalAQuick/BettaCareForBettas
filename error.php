@@ -2,8 +2,7 @@
 <html>
 <head>
 	<title>Error</title>
-	<link rel="stylesheet" type="text/css" href="error.css">
-
+	<link rel="stylesheet" type="text/css" href="styles/error.css">
 </head>
 <body>
 	<?php include('components/nav.php'); ?>

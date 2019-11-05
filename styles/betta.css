@@ -1,6 +1,7 @@
 body{
-  background-image: url("indexMultRocks.jpg");
+	background-image: url("images/indexMultRocks.jpg");
   background-attachment: fixed;
+	
 }
 
 ul {
@@ -70,6 +71,23 @@ textarea {
     opacity: 0.85;
 
 }
+
+#bettaTable{
+  /*background-color: white;*/
+  background-color: #262626;
+  opacity: 0.85;
+
+}
+
+#bettaTable h5, h4 {
+  color: white;
+}
+
+#entireForm{
+  margin-top: 100px;
+
+}
+
 h1{
 
 	color: #f0f0f5;
@@ -84,6 +102,12 @@ label{
 
 }
 
+h5{
+  margin-bottom: 10px;
+}
+h4{
+  margin-bottom: 50px;
+}
 
 
 

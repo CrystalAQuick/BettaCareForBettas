@@ -1,5 +1,5 @@
 <?php
-	    require('db_connect.php');
+	    require('database/db_connect.php');
 
 	    $query = "SELECT * FROM questions ORDER BY title" ;
 
@@ -14,13 +14,13 @@
 <html>
 <head>
 	<title>View All Questions</title>
-	<link rel="stylesheet" type="text/css" href="view.css">
+	<link rel="stylesheet" type="text/css" href="styles/view.css">
 </head>
 <body>
 	 <?php include('components/nav.php'); ?> 
     <div id="wrapper">
-    <h1>Recent Questions</h1>
-     <?php include('sortNav.php'); ?>   
+    <h1>Questions: sorted by Title</h1>
+     <?php include('components/sortNav.php'); ?>   
      	<?php while($row = $statement -> fetch()): ?>
      	  <div id="indie">  	
       <?php $date = date_create( $row['date']) ?>
@@ -29,7 +29,7 @@
       <a href="edit.php?id=<?=$row['id']?>">-edit</a></h5>
       <?php if(strlen($row['content']) > 200 ): ?>
         <?= substr($row['content'], 0, 200 ) . "... "; ?>
-          <a href="post.php?id=<?= $row['id'] ?>" id="full-blog-link"> Read Full Post</a> 
+          <a href="fullPost.php?id=<?= $row['id'] ?>" id="full-blog-link"> Read Full Post</a> 
       <?php else: ?>        
         <h4> <?= $row['content']  ?></h4> 
       <?php endif;?>  

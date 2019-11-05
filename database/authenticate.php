@@ -6,8 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- <title>Access Denied</title> -->
-	<link rel="stylesheet" type="text/css" href="error.css">
+	<link rel="stylesheet" type="text/css" href="styles/error.css">
 </head>
 <body>
 <div id= special>

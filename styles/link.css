@@ -1,15 +1,6 @@
-#special{
-  text-align: left;
-  background:  #262626;
-  opacity: 0.85;
-  font-size: 25px;
-  color: white;
-
-
-}
 body{
-	background-image: url("indexMultRocks.jpg");
-	
+  background-image: url("images/indexMultRocks.jpg");
+  background-attachment: fixed;
 }
 
 ul {
@@ -79,11 +70,6 @@ textarea {
     opacity: 0.85;
 
 }
-
-#indie{
-  background-color: white;
-}
-
 h1{
 
 	color: #f0f0f5;

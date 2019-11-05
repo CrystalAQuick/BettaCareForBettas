@@ -1,5 +1,5 @@
 <?php
-		    require('db_connect.php');
+		    require('database/db_connect.php');
 
 	    $query = "SELECT * FROM faq ORDER BY id" ;
 
@@ -12,7 +12,7 @@
 <html>
 <head>
 	<title>FAQ</title>
-	<link rel="stylesheet" type="text/css" href="faq.css">
+	<link rel="stylesheet" type="text/css" href="styles/faq.css">
 </head>
 <body>	 
 	 <?php include('components\nav.php'); ?> 

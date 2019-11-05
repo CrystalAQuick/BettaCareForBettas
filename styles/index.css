@@ -1,6 +1,6 @@
 body{
-	background-image: url("indexMultRocks.jpg");
-	
+  background-image: url("images/indexMultRocks.jpg");
+  background-attachment: fixed;
 }
 
 ul {
@@ -79,8 +79,9 @@ li.dropdown {
 h1{
   color: white;
 }
-
-#indie{
-  background-color: white;
-
+h3{
+  color: white;
+}
+h4{
+  color:  white;
 }
