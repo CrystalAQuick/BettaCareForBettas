@@ -8,23 +8,36 @@
 	 // UPDATE quote if author, content and id are present in POST.
     if ($_POST && isset($_POST['submitUpdate']) && isset($_POST['title']) && isset($_POST['content']) && isset($_POST['id'])) {
         // Sanitize user input to escape HTML entities and filter out dangerous characters.
+        // $date = date('Y-m-d'); 
+        // $insertDate = "INSERT INTO questions (dateUpdated) VALUES (NOW()) 
+        // WHERE id = :id";
+
+        // $insertDate = "INSERT INTO questions (dateUpdated) VALUES (NOW()) 
+        // ";
+        // $statementDate = $db->prepare($insertDate);
+        // $statementDate -> bindValue(':dateUpdated', $date);
+        // $statementDate->execute();
+
         $title  = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $id      = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
         
         if(strlen($title) >= 1  && strlen($content) >= 1){ 
-            // Build the parameterized SQL query and bind to the above sanitized values.
-            $query     = "UPDATE questions SET title = :title, content = :content WHERE id = :id";
+           
+// changed this around, might have to change it back
+            $date = date('YYYY-MM-DD'); 
+            $query     = "UPDATE questions SET title = :title, content = :content, :dateUpdated = GET_DATE() WHERE id = :id";
             $statement = $db->prepare($query);
             $statement->bindValue(':title', $title);        
             $statement->bindValue(':content', $content);
+            $statement->bindValue(':dateUpdated', $date);     
             $statement->bindValue(':id', $id, PDO::PARAM_INT);
             
             // Execute the INSERT.
             $statement->execute();
             
             // Redirect after update.
-            header("Location: index.php");
+            header("Location: view.php");
             exit;
          }  else {
 
@@ -81,7 +94,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>My Blog - Editing  - <?= $quote['title'] ?> </title>
+	<title>Editing  - <?= $quote['title'] ?> </title>
 	 <link rel="stylesheet" type="text/css" href="question.css" />
 </head>
 <body>
@@ -100,6 +113,7 @@
         <input type="submit" name="submitDelete" value="delete" >  
     </form>
 	<?php endif ?>    	
+
     </div>
 
 

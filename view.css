@@ -1,6 +1,6 @@
 body{
   background-image: url("indexMultRocks.jpg");
-  
+  background-attachment: fixed;
 }
 
 ul {
@@ -80,6 +80,12 @@ h1{
   color: #f0f0f5;
 }
 
+h4{
+   color: black;
+}
+h2{
+  color: white;
+}
 input{
   margin-bottom: 25px;
 }
@@ -90,17 +96,3 @@ label{
 }
 
 
-
-
-© 2019 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About

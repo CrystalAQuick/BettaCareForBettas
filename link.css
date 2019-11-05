@@ -1,6 +1,6 @@
 body{
-	background-image: url("indexMultRocks.jpg");
-	
+  background-image: url("indexMultRocks.jpg");
+  background-attachment: fixed;
 }
 
 ul {
