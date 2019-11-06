@@ -3,8 +3,8 @@
     $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     // one, two
-    require 'authenticate.php';
-    require('db_connect.php');
+    require 'database/authenticate.php';
+    require('database/db_connect.php');
     if ($_POST) {
         // if a title is not at least 1 and the content is not at least one it will fail.
         if(strlen($title) >= 1  && strlen($content) >= 1){

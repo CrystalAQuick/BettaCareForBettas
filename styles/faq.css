@@ -14,6 +14,7 @@ ul {
 
 li {
   float: left;
+  color: white;
 }
 
 li a, .dropbtn {
@@ -30,6 +31,7 @@ li a:hover, .dropdown:hover .dropbtn {
 
 li.dropdown {
   display: inline-block;
+  color: white;
 
 }
 
@@ -64,6 +66,12 @@ li.dropdown {
   background-color: #efefef;
   text-align: center;
 }
+#onRight{
+  color: blue;
+  text-align: right;
+  padding-top: -40px;
+  margin-top: -40px;
+}
 
 #wrapper {
 
@@ -83,4 +91,8 @@ h1{
 #indie{
   background-color: white;
 
+}
+
+h5{
+  color: #4dd2ff;
 }

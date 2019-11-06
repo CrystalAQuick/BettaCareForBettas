@@ -32,12 +32,11 @@
     <?php while($row2 = $statement2 -> fetch()): ?>
       <title> <?= $row2['title'] ?> </title>    
     <?php endwhile ?>
-
     <link rel="stylesheet" type="text/css" href="styles/view.css" />
 </head>
 <body>
   <?php include('components/nav.php'); ?>   
-          <h2>Full Post</h2> 
+          <h2>Commment on Post</h2> 
           <?php while($row = $statement -> fetch()): ?>
         <div id="indie">    
       <?php $date = date_create( $row['date']) ?>
@@ -55,6 +54,11 @@
 
       </div>   
     <?php endwhile ?>
+        <form method="post" action="insertReply.php">
+         <!--    <label for="content">Content</label> -->
+            <textarea id="content" name="content" rows="15" style="resize: none;" placeholder="Text (required) Image (optional)"></textarea>
+            <input type="submit">
+        </form>  
       <h1><a href="viewAll.php">Return to all questions.</a></h1>
     </div>
 </body>

@@ -1,5 +1,6 @@
 <?php 
      //require 'authenticate.php';
+    
      require('database/db_connect.php');
 
      // SQL is written as a String.

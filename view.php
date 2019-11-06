@@ -6,6 +6,15 @@
 	    $statement = $db->prepare($query);
 
 	    $statement->execute();
+
+      $queryReply = "SELECT * FROM reply" ;
+
+      $statementReply = $db->prepare($queryReply);
+
+      $statementReply->execute();
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +48,13 @@
       <?php else: ?>        
         <h4> <?= $row['content']  ?></h4> 
       <?php endif;?>  
-      </div>   
+      <h5><a href="reply.php?id=<?= $row['id'] ?>">Comment</a></h5>
+            <?php while($rowR = $statementReply -> fetch()): ?>
+                <h4> <?= $rowR['content']  ?></h4> 
+      <?php endwhile ?>  
+      </div>  
+
+
     <?php endwhile ?>
 
     </div>

@@ -2,8 +2,8 @@
    
     global $title;
 
-     require 'authenticate.php';
-	 require('db_connect.php');
+     require 'database/authenticate.php';
+	 require('database/db_connect.php');
 
 	 // UPDATE quote if author, content and id are present in POST.
     if ($_POST && isset($_POST['submitUpdate']) && isset($_POST['title']) && isset($_POST['content']) && isset($_POST['id'])) {

@@ -4,7 +4,7 @@
         $delete = "DELETE FROM questions WHERE id = {$_GET['id']}";
       
         if($db ->query($delete) == true){ 
-            header("Location: view.php");
+            header("Location: viewAll.php");
         } else {
             echo "not deleted";
         }

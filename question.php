@@ -7,7 +7,7 @@
 <html>
 <head>
     <title>Ask a Question</title>
-    <link rel="stylesheet" type="text/css" href="questions.css">
+    <link rel="stylesheet" type="text/css" href="styles/questions.css">
 </head>
 <body>
          <?php include('components/nav.php'); ?> 
@@ -20,9 +20,6 @@
             <textarea id="content" name="content" rows="15" style="resize: none;" placeholder="Text (required) Image (optional)"></textarea>
             <input type="submit">
         </form>  
-
-
-
     </div>
 </body>
 </html>
