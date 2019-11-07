@@ -1,16 +1,16 @@
 <?php
-    require 'database/authenticate.php';
-
+    require('database/db_connect.php');
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Ask a Question</title>
-    <link rel="stylesheet" type="text/css" href="styles/questions.css">
+    <link rel="stylesheet" type="text/css" href="styles/faqTemp.css">
+
 </head>
 <body>
-         <?php include('components/nav.php'); ?> 
+         <?php include('components/navTemp.php'); ?> 
     <div id="wrapper">
     <h1>Ask a Question!</h1>
         <form method="post" action="insert.php">

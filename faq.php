@@ -17,16 +17,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>FAQ</title>
+	<title>FAQ - All Questions</title>
 	<link rel="stylesheet" type="text/css" href="styles/faq.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 </head>
 <body>	 
-	 <?php include('components\nav.php'); ?> 
-       <?php include('components\faqNav.php'); ?>    
+ 
+    <?php include('components\navTemp.php'); ?> 
 
     <div id="wrapper">
   
-    <h1>Frequently Asked Questions</h1>
+    <h1>Frequently Asked Questions - All</h1>
   
      	    <?php while($row = $statement -> fetch()): ?>
      	  <div id="indie">  	  

@@ -1,7 +1,5 @@
-<nav>
-	<ul>
-		<li><a href="sortByTitle.php">Sort By Title</a></li>
-		<li><a href="sortByDate.php">Sort By Date</a></li>
-		<li><a href="sortByLike.php">Likes</a></li>
-	</ul>
-</nav>
+<div id="sortNavOptions">
+		<a href="sortByTitle.php">Sort By Title</a>
+	<a href="sortByDate.php">Sort By Date</a>
+		<a href="sortByLike.php">Likes</a>
+</div>

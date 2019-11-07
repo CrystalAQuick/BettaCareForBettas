@@ -17,7 +17,7 @@
 	<link rel="stylesheet" type="text/css" href="styles/view.css">
 </head>
 <body>
-	 <?php include('components/nav.php'); ?> 
+	 <?php include('components/navTemp.php'); ?> 
     <div id="wrapper">
     <h1>Questions: sorted by Title</h1>
      <?php include('components/sortNav.php'); ?>   

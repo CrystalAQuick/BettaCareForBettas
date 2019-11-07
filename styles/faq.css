@@ -1,7 +1,7 @@
-
 body{
-	background-image: url("images/indexMultRocks.jpg");
-	
+  background-image: url("images/indexMultRocks.jpg");
+  margin: 0px;
+  
 }
 
 ul {
@@ -18,61 +18,15 @@ li {
   color: white;
 }
 
-li a, .dropbtn {
-  display: inline-block;
-  color: white; 
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
 
-li a:hover, .dropdown:hover .dropbtn {
-  background-color: #7575a3;
-}
-
-li.dropdown {
-  display: inline-block;
+h1{
   color: white;
-
 }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color:  #f0f0f5;
-  min-width: 160px;
-
+h5{
+  color: #4dd2ff;
 }
 
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {background-color: #a3a3c2;}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.footer {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
-  background-color: #efefef;
-  text-align: center;
-}
-#onRight{
-  color: blue;
-  text-align: right;
-  padding-top: -40px;
-  margin-top: -40px;
-}
 
 #wrapper {
 
@@ -85,26 +39,21 @@ li.dropdown {
 
 }
 
-h1{
-  color: white;
-}
-
 #indie{
   background-color: white;
 
 }
 
-h5{
-  color: #4dd2ff;
-}
 
-/* The navigation menu */
+
 .navbar {
   overflow: hidden;
-  background-color: #333;
+  background-color: #404040;
+  opacity: .90;
+  font-family: 'Lato', sans-serif;
 }
 
-/* Navigation links */
+
 .navbar a {
   float: left;
   font-size: 16px;
@@ -114,53 +63,50 @@ h5{
   text-decoration: none;
 }
 
-/* The subnavigation menu */
 .subnav {
   float: left;
   overflow: hidden;
+  font-family: 'Lato', sans-serif;
 }
 
-/* Subnav button */
-.subnav .subnavbtn {
+.subnavbtn {
+  background-color: #404040;
   font-size: 16px;
   border: none;
   outline: none;
   color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
+  padding: 15px 17px;
+  margin: 10;
+  font-family: 'Lato', sans-serif;
 }
 
-/* Add a red background color to navigation links on hover */
 .navbar a:hover, .subnav:hover .subnavbtn {
-  background-color: red;
+  background-color:  #7300e6;
+  opacity: .25px;
+  font-family: 'Lato', sans-serif;
 }
 
-/* Style the subnav content - positioned absolute */
 .subnav-content {
   display: none;
   position: absolute;
   left: 0;
-  background-color: red;
+  background-color: #808080;
   width: 100%;
-  z-index: 1;
+  font-family: 'Lato', sans-serif;
+
 }
 
-/* Style the subnav links */
 .subnav-content a {
   float: left;
   color: white;
   text-decoration: none;
 }
 
-/* Add a grey background color on hover */
+
 .subnav-content a:hover {
-  background-color: #eee;
-  color: black;
+  background-color: #e6ccff;
 }
 
-/* When you move the mouse over the subnav container, open the subnav content */
 .subnav:hover .subnav-content {
   display: block;
 }

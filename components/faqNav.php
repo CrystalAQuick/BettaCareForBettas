@@ -8,12 +8,9 @@
 
 <nav>
     <ul>
-        <li> 
           <?php while($row = $statementCat -> fetch()): ?>
              <a href="faqLike.php?type=<?=$row['type']?>">  <?= $row['type'] ?> </a>
                
-          <?php endwhile ?>
-
-        </li>  
+          <?php endwhile ?>  
     </ul>
 </nav>

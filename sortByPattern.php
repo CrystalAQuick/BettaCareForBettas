@@ -19,7 +19,7 @@
 	<link rel="stylesheet" type="text/css" href="styles/betta.css">
 </head>
 <body>
-		 <?php include('components/nav.php'); ?> 
+		 <?php include('components/navTemp.php'); ?> 
 <div id="entireForm">
 	
 </div>		 

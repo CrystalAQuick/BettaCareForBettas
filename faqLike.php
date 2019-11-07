@@ -17,8 +17,8 @@
 	<link rel="stylesheet" type="text/css" href="styles/faq.css">
 </head>
 <body>	 
-	 <?php include('components\nav.php'); ?> 
-   <?php include('components\faqNav.php'); ?> 
+	 <?php include('components\navTemp.php'); ?> 
+
     <div id="wrapper">
      <h1>Frequently Asked Questions like : <?= $something  ?> </h1>
      	    <?php while($row = $statementLike -> fetch()): ?>

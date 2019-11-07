@@ -24,11 +24,11 @@
     <link rel="stylesheet" type="text/css" href="styles/view.css">
 </head>
 <body>
-	 <?php include('components/nav.php'); ?> 
+	 <?php include('components/navTemp.php'); ?> 
 
     <div id="wrapper">
     <h1>Recent Questions</h1>
-        <h2><a href="viewAll.php">View All Questions </a></h2>
+
 
      	    <?php while($row = $statement -> fetch()): ?>
      	  <div id="indie">  	

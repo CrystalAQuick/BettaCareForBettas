@@ -89,6 +89,8 @@
 <head>
     <title>Editing  - <?= $quote['question'] ?> </title>
      <link rel="stylesheet" type="text/css" href="styles/question.css" />
+     
+     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 </head>
 <body>
     <script>
@@ -96,7 +98,7 @@
     var t= confirm("Are you sure?");
   }     
 </script>
-    <?php include('components/nav.php'); ?>  
+    <?php include('components/navTemp.php'); ?>  
     <?php include('deleteFaq.php'); ?>
     <div id="wrapper">
     <?php if($id): ?>

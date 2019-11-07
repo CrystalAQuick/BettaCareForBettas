@@ -1,12 +1,16 @@
+<?php
+   require('database/db_connect.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>index.html</title>
-	<link rel="stylesheet" type="text/css" href="styles/index.css">
+	<link rel="stylesheet" type="text/css" href="styles/faqTemp.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 </head>
 <body>
 	 
-	 <?php include('components\nav.php'); ?>
+	 <?php include('components\navTemp.php'); ?>
 	  
 	 <div id="wrapper">
 	 	
