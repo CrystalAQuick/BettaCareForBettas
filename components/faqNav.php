@@ -1,21 +1,19 @@
 <?php
-    
-
-       $queryCat = "SELECT * FROM faq f JOIN categories c ON c.type=f.type";
-
-      $statementCat = $db->prepare($query);
+      
+      $queryCat = "SELECT * FROM categories ORDER BY id";
+      $statementCat = $db->prepare($queryCat);
 
       $statementCat->execute();
 ?>
 
 <nav>
     <ul>
-        <h5> 
+        <li> 
           <?php while($row = $statementCat -> fetch()): ?>
-             <!-- <a href="faqLike.php?type=<?=$row['type']?>"> </a> -->
-               <?= $row['type'] ?>
+             <a href="faqLike.php?type=<?=$row['type']?>">  <?= $row['type'] ?> </a>
+               
           <?php endwhile ?>
 
-        </h5>  
+        </li>  
     </ul>
 </nav>

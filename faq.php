@@ -7,6 +7,12 @@
 
 	    $statement->execute();
 
+      $queryCat = "SELECT * FROM users";
+      $statementCat = $db->prepare($query);
+
+      $statementCat->execute();
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,11 +22,12 @@
 </head>
 <body>	 
 	 <?php include('components\nav.php'); ?> 
-   
-    <div id="wrapper">
+       <?php include('components\faqNav.php'); ?>    
 
+    <div id="wrapper">
+  
     <h1>Frequently Asked Questions</h1>
-   
+  
      	    <?php while($row = $statement -> fetch()): ?>
      	  <div id="indie">  	  
       <h3> <a href="faqContents.php?id=<?=$row['id']?>"> <?= $row['question'] ?></a></h3>

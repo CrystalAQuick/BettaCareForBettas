@@ -19,6 +19,7 @@
 </head>
 <body>
 		 <?php include('components/nav.php'); ?> 
+                          
 <div id="entireForm">
 	
 </div>		 

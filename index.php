@@ -6,7 +6,8 @@
 </head>
 <body>
 	 
-	 <?php include('components\nav.php'); ?> 
+	 <?php include('components\nav.php'); ?>
+	  
 	 <div id="wrapper">
 	 	
 	 	<h1>Betta Fish Care: First Time Owners Guide</h1>
