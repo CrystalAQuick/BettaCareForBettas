@@ -1,5 +1,6 @@
 <?php
 		  require('database/db_connect.php');
+      require 'database/authenticate.php';
 
 	    $query = "SELECT * FROM faq ORDER BY id" ;
 
@@ -16,19 +17,20 @@
 </head>
 <body>	 
 	 <?php include('components\nav.php'); ?> 
-   
+
     <div id="wrapper">
 
     <h1>Frequently Asked Questions</h1>
    
      	    <?php while($row = $statement -> fetch()): ?>
      	  <div id="indie">  	  
-      <h3> <a href="faqContents.php?id=<?=$row['id']?>"> <?= $row['question'] ?></a></h3>
-          
-      </div>   
+      <h3> <a href="faqContents.php?id=<?=$row['id']?>"> <?= $row['question'] ?></a>   </h3>
+           <a href="editFaq.php?id=<?=$row['id']?>">-edit</a>      
+      </div>  
+
     <?php endwhile ?>
-  
+          <h5><a href="insertMod.php">Insert</a></h5>
     </div>
-    <h5><a href="faqMod.php">Moderator</a> </h5>
+    <h5><a href="insertMod.php">Moderator</a> </h5>
 </body>
 </html>

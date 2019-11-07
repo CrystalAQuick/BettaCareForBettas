@@ -34,7 +34,7 @@
 
       <?php if(strlen($row['content']) > 200 ): ?>
         <?= substr($row['content'], 0, 200 ) . "... "; ?>
-          <a href="post.php?id=<?= $row['id'] ?>" id="full-blog-link"> Read Full Post</a> 
+          <a href="fullPost.php?id=<?= $row['id'] ?>" id="full-blog-link"> Read Full Post</a> 
       <?php else: ?>        
         <h4> <?= $row['content']  ?></h4> 
       <?php endif;?>  

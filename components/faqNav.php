@@ -3,7 +3,6 @@
 
        $queryCat = "SELECT * FROM faq f JOIN categories c ON c.type=f.type";
 
-
       $statementCat = $db->prepare($query);
 
       $statementCat->execute();

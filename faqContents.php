@@ -18,7 +18,7 @@
 	 <?php include('components\nav.php'); ?> 
     <div id="wrapper">
     <h1>Frequently Asked Questions</h1>
-          <?php include('components\faqNav.php'); ?> 
+        
    <?php while($row = $statement -> fetch()): ?>
         <div id="indie">    
         <h4> <?= $row['question']  ?></h4>

@@ -1,19 +1,11 @@
 <?php
 		  require('database/db_connect.php');
 
-	    //$queryLike = "SELECT * FROM faq f JOIN categories c ON c.type=f.type WHERE c.type=f.type AND WHERE type={$_GET['type']}" ;
-
-      //$queryLike = "SELECT * FROM faq WHERE type = {$_GET['type']}" ; 
       $queryLike = "SELECT * FROM faq WHERE type = :type" ; 
-     // $queryLike = "SELECT {$_GET['type']} FROM faq" ; 
-	    
-      //$queryLike = "SELECT * FROM faq ORDER BY id" ;
+
       $statementLike = $db->prepare($queryLike);
       $something = "{$_GET['type']}";
       $statementLike->bindValue(':type', $something);
-      // foreach ($query as $item => $_POST['type']) {
-      //   echo $item;
-      // }
 
 	    $statementLike->execute();
 
@@ -28,18 +20,13 @@
 	 <?php include('components\nav.php'); ?> 
 
     <div id="wrapper">
-
-    <h1>Frequently Asked Questions - like</h1>
-   
+     <h1>Frequently Asked Questions like : <?= $something  ?> </h1>
      	    <?php while($row = $statementLike -> fetch()): ?>
      	  <div id="indie">  	  
       <h3> <a href="faqContents.php?id=<?=$row['id']?>"> <?= $row['question'] ?></a></h3>
-           HELLO
-
-      </div>   
+      </div>     
     <?php endwhile ?>
-   <?=  $queryLike  ?>
-
+      <h4><a href="faq.php">Back to FAQ</a></h4>
     </div>
 </body>
 </html>

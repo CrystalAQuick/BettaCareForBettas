@@ -3,46 +3,46 @@
     global $title;
 
      require 'database/authenticate.php';
-	 require('database/db_connect.php');
+     require('database/db_connect.php');
 
-	 // UPDATE quote if author, content and id are present in POST.
-    if ($_POST && isset($_POST['submitUpdate']) && isset($_POST['title']) && isset($_POST['content']) && isset($_POST['id'])) {
+     // UPDATE quote if author, content and id are present in POST.
+    if ($_POST && isset($_POST['submitUpdate']) && isset($_POST['question']) && isset($_POST['answer']) && isset($_POST['id'])) {
         // Sanitize user input 
-        $title  = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $question  = filter_input(INPUT_POST, 'question', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $answer = filter_input(INPUT_POST, 'answer', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $id      = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
         
-        if(strlen($title) >= 1  && strlen($content) >= 1){ 
+        if(strlen($question) >= 1  && strlen($answer) >= 1){ 
             // creating the current date
             $date = date('Y-m-d H:i:s');
             // updating the table
-            $query     = "UPDATE questions SET title = :title, content = :content, 
-            dateUpdated = :dateUpdated WHERE id = :id";
+            $query     = "UPDATE faq SET question = :question, answer = :answer
+             WHERE id = :id";
             
             $statement = $db->prepare($query);
-            $statement->bindValue(':title', $title);        
-            $statement->bindValue(':content', $content);
-            $statement->bindValue(':dateUpdated', $date);     
+            $statement->bindValue(':question', $question);        
+            $statement->bindValue(':answer', $answer);
+    
             $statement->bindValue(':id', $id, PDO::PARAM_INT);
             
             // Execute the INSERT.
             $statement->execute();
             
             // Redirect after update.
-            header("Location: view.php");
+            header("Location: faqMod.php");
             exit;
          }  else {
 
-            if (strlen($content) < 1) {
+            if (strlen($answer) < 1) {
                ECHO  nl2br("Error - Please enter content. The content must be a minimum of one character in length.\r\n");                
             }
-            if(strlen($title) < 1){
+            if(strlen($question) < 1){
                 ECHO nl2br("Error - Please enter a title. The title must be a minimum of one character in length.\r\n");               
             } 
             $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
             // Build the parametrized SQL query using the filtered id.
-            $query = "SELECT * FROM questions WHERE id = :id";
+            $query = "SELECT * FROM faq WHERE id = :id";
             $statement = $db->prepare($query);
             $statement->bindValue(':id', $id, PDO::PARAM_INT);
 
@@ -57,7 +57,7 @@
         $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
         
         // Build the parametrized SQL query using the filtered id.
-        $query = "SELECT * FROM questions WHERE id = :id";
+        $query = "SELECT * FROM faq WHERE id = :id";
         $statement = $db->prepare($query);
         $statement->bindValue(':id', $id, PDO::PARAM_INT);
         
@@ -66,17 +66,18 @@
         $quote = $statement->fetch();
 
         if($id == false){
-            header("Location: index.php");
+            header("Location: faqMod.php");
         }
 
         //nav to 
         if(!$id || $statement ->rowCount() != 1){
-            header("Location: index.php");
+            header("Location: faqMod.php");
             
         }
 
     } else {    
-        $id = false; // False if we are not UPDATING or SELECTING.
+        $id = false; 
+      // False if we are not UPDATING or SELECTING.
         //header("Location: index.php");
     } 
 
@@ -86,8 +87,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Editing  - <?= $quote['title'] ?> </title>
-	 <link rel="stylesheet" type="text/css" href="styles/question.css" />
+    <title>Editing  - <?= $quote['question'] ?> </title>
+     <link rel="stylesheet" type="text/css" href="styles/question.css" />
 </head>
 <body>
     <script>
@@ -95,20 +96,20 @@
     var t= confirm("Are you sure?");
   }     
 </script>
-	<?php include('components/nav.php'); ?>  
-    <?php include('delete.php'); ?>
+    <?php include('components/nav.php'); ?>  
+    <?php include('deleteFaq.php'); ?>
     <div id="wrapper">
-	<?php if($id): ?>
+    <?php if($id): ?>
     <form method="post">
-    	<input type="hidden" name="id" value="<?=  $quote['id'] ?>" >
+        <input type="hidden" name="id" value="<?=  $quote['id'] ?>" >
        <!--  <label  id="title">Title</label> -->
-        <input id="titleInput" name="title" value="<?= $quote['title'] ?>">
+        <input id="titleInput" name="title" value="<?= $quote['question'] ?>">
       <!--   <label  id="content">Content</label> -->
-        <textarea id="contentInput" name="content" rows="20" cols="100"> <?= $quote['content']  ?></textarea> 
+        <textarea id="contentInput" name="content" rows="20" cols="100"> <?= $quote['answer']  ?></textarea> 
         <input id="submit" type="submit" value="update" name="submitUpdate">
         <input onclick="test()" type="submit" name="submitDelete" value="delete" >       
     </form>
-	<?php endif ?>    	
+    <?php endif ?>      
     </div>
 
 </body>
