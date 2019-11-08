@@ -31,6 +31,7 @@
     <?php endwhile ?>
           <h5><a href="insertMod.php">Insert</a></h5>
           <h5><a href="insertCat.php">New Category</a></h5>
+          <h5><a href="updateCat.php">Update Category</a> </h5>
 
     </div>
     <h5><a href="insertMod.php">Moderator</a> </h5>

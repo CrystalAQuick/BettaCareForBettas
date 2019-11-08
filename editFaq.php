@@ -112,6 +112,7 @@
         <input onclick="test()" type="submit" name="submitDelete" value="delete" >       
     </form>
     <?php endif ?>      
+    <h5><a href="editFaq.php">back</a></h5>
     </div>
 
 </body>

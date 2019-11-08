@@ -7,21 +7,17 @@
     if ($_POST) {
         // if a title is not at least 1 and the content is not at least one it will fail.
         if(strlen($type) >= 1 ){
-
- 
-                $insertType = "INSERT INTO categories (type) VALUES (:type)";
-
-                $statementType = $db->prepare($insertType);
-                
-     
-                $statementType -> bindValue(':type', $type);
-                $statementType->execute();
-
-                $updateType     = "UPDATE faq SET question = :question, answer = :answer WHERE question = :question";
+               
+  
+                // $updateType     = "UPDATE categories SET type = :typeD "; // works but updates everything
+                // $updateType     = "UPDATE categories SET type = :typeD WHERE id = :id";
+                // $updateType     = "UPDATE categories SET type = :typeD WHERE id = {$_GET['id']}" ;
+                $updateType     = "UPDATE categories SET type = :typeD WHERE id = {$_GET['typeD']}  " ;
 
                 $postType = $db->prepare($updateType);
-                $postType->bindValue(':question', $type);        
-      
+                $postType->bindValue(':typeD', $type);        
+                // $postType->bindValue("{$_POST['typeD']} ", "{$_GET['typeD']}");  
+
                 $postType->execute();
                 header("Location: faqMod.php");
                 exit;                
@@ -38,7 +34,11 @@
 
     }
 
+        $queryInsertD = "SELECT * FROM categories" ;
 
+        $statementInsertD = $db->prepare($queryInsertD);
+
+        $statementInsertD->execute();
 
 ?>
 
@@ -51,14 +51,27 @@
 <body>
          <?php include('components/nav.php'); ?> 
     <div id="wrapper">
-    <h1>Insert New Category</h1>
-        <form method="post" action="insertCat.php">
+    <h1>Update Category</h1>
+        <form method="post" action="updateCat.php">
             <!-- <label for="title">Title</label> -->
             <input id="type" name="type" placeholder="New Catergory (required)">
-                   
+     
             <input type="submit">
             <h5><a href="editFaq.php">back</a></h5>
-        </form>  
+        </form> 
+
     </div>
 </body>
 </html>
+
+<!-- 
+            <select id="type" name="typeD">
+                
+                  <?php while($row = $statementInsertD -> fetch()): ?>
+
+                      <option>    
+                            
+                            <?= $row['type']?>
+                    </option>
+                <?php endwhile ?>
+            </select>  -->
