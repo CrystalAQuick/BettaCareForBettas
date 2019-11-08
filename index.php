@@ -5,7 +5,7 @@
 <html>
 <head>
 	<title>index.html</title>
-	<link rel="stylesheet" type="text/css" href="styles/faqTemp.css">
+	<link rel="stylesheet" type="text/css" href="styles/index.css">
 	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -21,6 +21,6 @@
 	 	<h4>BettaCare4Bettas encourages community invlovement! Register in order to participate on the forms or if you are just looking around, click any of the tabs and find anwsers to your questions!</h4> 	
 	 </div>
 
-	<!--  <?php include('components\footer.php'); ?>  -->
+	
 </body>
 </html>

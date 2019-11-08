@@ -77,8 +77,8 @@
 
     } else {    
         $id = false; 
-      // False if we are not UPDATING or SELECTING.
-        //header("Location: index.php");
+         header("Location: faqMod.php");
+
     } 
 
 ?>
@@ -88,7 +88,7 @@
 <html lang="en">
 <head>
     <title>Editing  - <?= $quote['question'] ?> </title>
-     <link rel="stylesheet" type="text/css" href="styles/question.css" />
+     <link rel="stylesheet" type="text/css" href="styles/questions.css" />
      
      <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 </head>

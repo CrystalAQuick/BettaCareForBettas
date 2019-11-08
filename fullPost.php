@@ -36,10 +36,11 @@
     <link rel="stylesheet" type="text/css" href="styles/view.css" />
 </head>
 <body>
-  <?php include('components/nav.php'); ?>   
-          <h2>Full Post</h2> 
+  <?php include('components/navTemp.php'); ?>   
+  <div id="wrapper">
           <?php while($row = $statement -> fetch()): ?>
-        <div id="indie">    
+        <div id="indie"> 
+                 <h2>Full Post</h2>    
       <?php $date = date_create( $row['date']) ?>
       <h3><?= $row['title'] ?> </h3>
      
@@ -56,6 +57,12 @@
       </div>   
     <?php endwhile ?>
       <h1><a href="viewAll.php">Return to all questions.</a></h1>
-    </div>
+    </div>   
+
+
+
+
+  </div>
+
 </body>
 </html> 

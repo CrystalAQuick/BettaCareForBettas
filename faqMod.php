@@ -16,7 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="styles/faq.css">
 </head>
 <body>	 
-	 <?php include('components\nav.php'); ?> 
+	 <?php include('components\navTemp.php'); ?> 
 
     <div id="wrapper">
 
@@ -30,6 +30,8 @@
 
     <?php endwhile ?>
           <h5><a href="insertMod.php">Insert</a></h5>
+          <h5><a href="insertCat.php">New Category</a></h5>
+
     </div>
     <h5><a href="insertMod.php">Moderator</a> </h5>
 </body>

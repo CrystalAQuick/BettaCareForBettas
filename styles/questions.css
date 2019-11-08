@@ -1,6 +1,7 @@
 body{
-	background-image: url("images/indexMultRocks.jpg");
-	
+  background-image: url("images/indexMultRocks.jpg");
+  margin: 0px;
+  
 }
 
 ul {
@@ -14,50 +15,29 @@ ul {
 
 li {
   float: left;
+  color: white;
 }
 
-li a, .dropbtn {
-  display: inline-block;
-  color: white; 
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+
+h1{
+  color: white;
 }
 
-li a:hover, .dropdown:hover .dropbtn {
-  background-color: #7575a3;
+h5{
+  color: #4dd2ff;
 }
 
-li.dropdown {
-  display: inline-block;
-
+#title{
+  margin-right: 200px;
+  width: 600px;
 }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color:  #f0f0f5;
-  min-width: 160px;
-
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {background-color: #a3a3c2;}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-textarea {
-    height: 10em;
-    width: 55em;
+textarea{
+  padding-right:  100px;
+  padding-top: 50px;
+  margin-top: 50px;
+  margin-right: 300px;
+  width: 550px;
 }
 
 #wrapper {
@@ -70,20 +50,76 @@ textarea {
     opacity: 0.85;
 
 }
-h1{
 
-	color: #f0f0f5;
-}
-
-input{
-	margin-bottom: 25px;
-}
-
-label{
-	color: red;
+#indie{
+  background-color: white;
 
 }
 
 
 
+.navbar {
+  overflow: hidden;
+  background-color: #404040;
+  opacity: .90;
+  font-family: 'Lato', sans-serif;
+}
+
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.subnav {
+  float: left;
+  overflow: hidden;
+  font-family: 'Lato', sans-serif;
+}
+
+.subnavbtn {
+  background-color: #404040;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 15px 17px;
+  margin: 10;
+  font-family: 'Lato', sans-serif;
+}
+
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color:  #7300e6;
+  opacity: .25px;
+  font-family: 'Lato', sans-serif;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: #808080;
+  width: 100%;
+  font-family: 'Lato', sans-serif;
+
+}
+
+.subnav-content a {
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+
+
+.subnav-content a:hover {
+  background-color: #e6ccff;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
+}
 

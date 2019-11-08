@@ -6,7 +6,7 @@
 <html>
 <head>
     <title>Ask a Question</title>
-    <link rel="stylesheet" type="text/css" href="styles/faqTemp.css">
+    <link rel="stylesheet" type="text/css" href="styles/questions.css">
 
 </head>
 <body>

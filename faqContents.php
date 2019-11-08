@@ -15,7 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="styles/faq.css">
 </head>
 <body>	 
-	 <?php include('components\nav.php'); ?> 
+	 <?php include('components\navTemp.php'); ?> 
     <div id="wrapper">
     <h1>Frequently Asked Questions</h1>
         
@@ -24,9 +24,7 @@
         <h4> <?= $row['question']  ?></h4>
         <h4> <?= $row['answer']  ?></h4> 
         <h4><a href="faq.php">Back to FAQ</a></h4>
-        <div id="onRight">
-            <h4> <a href="faqLike.php?type=<?=$row['type'] ?> "> View more like <?= $row['type'] ?></a></h4>          
-        </div>
+
 
       </div>   
     <?php endwhile ?>
