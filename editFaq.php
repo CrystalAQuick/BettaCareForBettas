@@ -91,6 +91,7 @@
      <link rel="stylesheet" type="text/css" href="styles/questions.css" />
      
      <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+     <script src="//cdn.ckeditor.com/4.13.0/basic/ckeditor.js"></script>
 </head>
 <body>
     <script>
@@ -107,7 +108,9 @@
        <!--  <label  id="title">Title</label> -->
         <input id="titleInput" name="title" value="<?= $quote['question'] ?>">
       <!--   <label  id="content">Content</label> -->
-        <textarea id="contentInput" name="content" rows="20" cols="100"> <?= $quote['answer']  ?></textarea> 
+        
+        <textarea id="contentInput" name="content" rows="20" cols="100"> <?= $quote['answer']  ?></textarea>
+        <script> CKEDITOR.replace('content');</script> 
         <input id="submit" type="submit" value="update" name="submitUpdate">
         <input onclick="test()" type="submit" name="submitDelete" value="delete" >       
     </form>

@@ -56,12 +56,13 @@
 
 
 ?>
-
+<!-- //https://cdn.ckeditor.com/ -->
 <!DOCTYPE html>
 <html>
 <head>
     <title>Insert FAQ Question</title>
     <link rel="stylesheet" type="text/css" href="styles/questions.css">
+    <script src="//cdn.ckeditor.com/4.13.0/basic/ckeditor.js"></script>
 </head>
 <body>
          <?php include('components/nav.php'); ?> 
@@ -72,7 +73,14 @@
             <input id="question" name="question" placeholder="Title (required)">
          <!--    <label for="content">Content</label> -->
             <textarea id="answer" name="answer" rows="15" style="resize: none;" placeholder="Text (required)"></textarea>
-                      
+            <script>
+                CKEDITOR.config.autoParagraph = false;
+                // CKDEITOR.config.htmlEncodeOutput = true;
+                // CKEDITOR.config.breakBeforeOpen = false;
+                // CKEDITOR.config.breakAfterOpen = false;
+                // CKEDITOR.config.baseHref - false;
+                CKEDITOR.replace('answer');
+            </script>           
             <select id="type" name="type">
                 
                   <?php while($row = $statementInsert -> fetch()): ?>
