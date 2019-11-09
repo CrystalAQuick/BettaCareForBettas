@@ -5,7 +5,6 @@
      require 'database/authenticate.php';
 	 require('database/db_connect.php');
 
-	 // UPDATE quote if author, content and id are present in POST.
     if ($_POST && isset($_POST['submitUpdate']) && isset($_POST['title']) && isset($_POST['content']) && isset($_POST['id'])) {
         // Sanitize user input 
         $title  = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -87,7 +86,8 @@
 <html lang="en">
 <head>
 	<title>Editing  - <?= $quote['title'] ?> </title>
-	 <link rel="stylesheet" type="text/css" href="styles/question.css" />
+	 <link rel="stylesheet" type="text/css" href="styles/questions.css" />
+      <script src="//cdn.ckeditor.com/4.13.0/basic/ckeditor.js"></script>
 </head>
 <body>
     <script>
@@ -95,7 +95,7 @@
     var t= confirm("Are you sure?");
   }     
 </script>
-	<?php include('components/nav.php'); ?>  
+	<?php include('components/navTemp.php'); ?>  
     <?php include('delete.php'); ?>
     <div id="wrapper">
 	<?php if($id): ?>
@@ -105,6 +105,7 @@
         <input id="titleInput" name="title" value="<?= $quote['title'] ?>">
       <!--   <label  id="content">Content</label> -->
         <textarea id="contentInput" name="content" rows="20" cols="100"> <?= $quote['content']  ?></textarea> 
+                     <script> CKEDITOR.replace('content');</script>
         <input id="submit" type="submit" value="update" name="submitUpdate">
         <input onclick="test()" type="submit" name="submitDelete" value="delete" >       
     </form>

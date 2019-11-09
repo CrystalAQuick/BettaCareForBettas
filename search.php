@@ -72,6 +72,7 @@
 		   <?php endwhile ?>    	    
     <?php endif; ?> 
 </div>
+<h4><a href="">Not What youre looking for? Try seacrching this</a> </h4>
 <h2><a href="index.php">back to home</a> </h2>
    <!--  <?= $_SESSION['search']?> -->
 </body>

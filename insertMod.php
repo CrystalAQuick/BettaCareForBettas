@@ -65,7 +65,7 @@
     <script src="//cdn.ckeditor.com/4.13.0/basic/ckeditor.js"></script>
 </head>
 <body>
-         <?php include('components/nav.php'); ?> 
+         <?php include('components/navTemp.php'); ?> 
     <div id="wrapper">
     <h1>Insert FAQ Question</h1>
         <form method="post" action="insertMod.php">
@@ -74,12 +74,9 @@
          <!--    <label for="content">Content</label> -->
             <textarea id="answer" name="answer" rows="15" style="resize: none;" placeholder="Text (required)"></textarea>
             <script>
-                CKEDITOR.config.autoParagraph = false;
-                // CKDEITOR.config.htmlEncodeOutput = true;
-                // CKEDITOR.config.breakBeforeOpen = false;
-                // CKEDITOR.config.breakAfterOpen = false;
-                // CKEDITOR.config.baseHref - false;
-                CKEDITOR.replace('answer');
+                 CKEDITOR.replace('answer');
+                 $answer = filter_input(INPUT_POST, 'answer', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+  
             </script>           
             <select id="type" name="type">
                 

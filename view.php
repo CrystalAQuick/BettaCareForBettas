@@ -27,9 +27,7 @@
 	 <?php include('components/navTemp.php'); ?> 
 
     <div id="wrapper">
-    <h1>Recent Questions</h1>
-
-
+    <h1>Recent Questions - a</h1>
      	    <?php while($row = $statement -> fetch()): ?>
      	  <div id="indie">  	
       <?php $date = date_create( $row['date']) ?>
@@ -42,19 +40,17 @@
             <h5>*Updated* at <?= date_format($date,"F d, Y g:i a" ) ?>
       <?php endif;?> 
 
-      <?php if(strlen($row['content']) > 200 ): ?>
-        <?= substr($row['content'], 0, 200 ) . "... "; ?>
+      <?php if(strlen( htmlspecialchars_decode($row['content'])) > 200 ): ?>
+        <?= substr(htmlspecialchars_decode($row['content']), 0, 200 ) . "... "; ?>
           <a href="fullPost.php?id=<?= $row['id'] ?>"> Read Full Post</a> 
       <?php else: ?>        
-        <h4> <?= $row['content']  ?></h4> 
+        <h4> <?=htmlspecialchars_decode($row['content'])  ?></h4> 
       <?php endif;?>  
       <h5><a href="reply.php?id=<?= $row['id'] ?>">Comment</a></h5>
             <?php while($rowR = $statementReply -> fetch()): ?>
-                <h4> <?= $rowR['content']  ?></h4> 
+                <h4> <?= htmlspecialchars_decode($rowR['content'])  ?></h4> 
       <?php endwhile ?>  
       </div>  
-
-
     <?php endwhile ?>
 
     </div>

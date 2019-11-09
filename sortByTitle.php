@@ -27,11 +27,11 @@
       <h3> <?= $row['title'] ?> </h3>
       <h5> <?= date_format($date,"F d, Y g:i a" ) ?>
       <a href="edit.php?id=<?=$row['id']?>">-edit</a></h5>
-      <?php if(strlen($row['content']) > 200 ): ?>
-        <?= substr($row['content'], 0, 200 ) . "... "; ?>
+      <?php if(strlen(htmlspecialchars_decode($row['content'])) > 200 ): ?>
+        <?= substr(htmlspecialchars_decode($row['content']), 0, 200 ) . "... "; ?>
           <a href="fullPost.php?id=<?= $row['id'] ?>" id="full-blog-link"> Read Full Post</a> 
       <?php else: ?>        
-        <h4> <?= $row['content']  ?></h4> 
+        <h4> <?= htmlspecialchars_decode($row['content'])  ?></h4> 
       <?php endif;?>  
       </div>   
     <?php endwhile ?>

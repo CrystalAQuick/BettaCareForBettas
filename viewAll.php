@@ -32,11 +32,11 @@
             <h5>*Updated* at <?= date_format($date,"F d, Y g:i a" ) ?>
       <?php endif;?> 
 
-      <?php if(strlen($row['content']) > 200 ): ?>
-        <?= substr($row['content'], 0, 200 ) . "... "; ?>
+      <?php if(strlen( htmlspecialchars_decode($row['content'])) > 200 ): ?>
+        <?= substr(htmlspecialchars_decode($row['content']), 0, 200 ) . "... "; ?>
           <a href="fullPost.php?id=<?= $row['id'] ?>" id="full-blog-link"> Read Full Post</a> 
       <?php else: ?>        
-        <h4> <?= $row['content']  ?></h4> 
+        <h4> <?= htmlspecialchars_decode($row['content'])  ?></h4> 
       <?php endif;?>  
       </div>   
     <?php endwhile ?>

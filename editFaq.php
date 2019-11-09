@@ -5,53 +5,32 @@
      require 'database/authenticate.php';
      require('database/db_connect.php');
 
-     // UPDATE quote if author, content and id are present in POST.
+    
     if ($_POST && isset($_POST['submitUpdate']) && isset($_POST['question']) && isset($_POST['answer']) && isset($_POST['id'])) {
         // Sanitize user input 
         $question  = filter_input(INPUT_POST, 'question', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $answer = filter_input(INPUT_POST, 'answer', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $id      = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
-        
+        $type = filter_input(INPUT_POST, 'type', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         if(strlen($question) >= 1  && strlen($answer) >= 1){ 
             // creating the current date
             $date = date('Y-m-d H:i:s');
             // updating the table
-            $query     = "UPDATE faq SET question = :question, answer = :answer
-             WHERE id = :id";
+            $queryEdit     = "UPDATE faq SET question = :question, answer = :answer, type = :type WHERE id = :id";
             
-            $statement = $db->prepare($query);
-            $statement->bindValue(':question', $question);        
-            $statement->bindValue(':answer', $answer);
-    
-            $statement->bindValue(':id', $id, PDO::PARAM_INT);
+            $statementEdit = $db->prepare($queryEdit);
+            $statementEdit->bindValue(':question', $question);        
+            $statementEdit->bindValue(':answer', $answer);
+               $statementEdit -> bindValue(':type', $type);
+            $statementEdit->bindValue(':id', $id, PDO::PARAM_INT);
             
             // Execute the INSERT.
-            $statement->execute();
+            $statementEdit->execute();
             
             // Redirect after update.
             header("Location: faqMod.php");
             exit;
-         }  else {
-
-            if (strlen($answer) < 1) {
-               ECHO  nl2br("Error - Please enter content. The content must be a minimum of one character in length.\r\n");                
-            }
-            if(strlen($question) < 1){
-                ECHO nl2br("Error - Please enter a title. The title must be a minimum of one character in length.\r\n");               
-            } 
-            $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-
-            // Build the parametrized SQL query using the filtered id.
-            $query = "SELECT * FROM faq WHERE id = :id";
-            $statement = $db->prepare($query);
-            $statement->bindValue(':id', $id, PDO::PARAM_INT);
-
-            // Execute the SELECT and fetch the single row returned.
-            $statement->execute();
-            $quote = $statement->fetch(); 
-
-        }
-
+         }  
     } else if (isset($_GET['id'])) { // Retrieve quote to be edited, if id GET parameter is in URL.
         // Sanitize the id. Like above but this time from INPUT_GET.
         $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
@@ -81,6 +60,12 @@
 
     } 
 
+        $queryInsert = "SELECT * FROM categories" ;
+
+        $statementInsert = $db->prepare($queryInsert);
+
+        $statementInsert->execute();
+
 ?>
 
 
@@ -106,17 +91,29 @@
     <form method="post">
         <input type="hidden" name="id" value="<?=  $quote['id'] ?>" >
        <!--  <label  id="title">Title</label> -->
-        <input id="titleInput" name="title" value="<?= $quote['question'] ?>">
+        <input id="titleInput" name="question" value="<?= $quote['question'] ?>">
       <!--   <label  id="content">Content</label> -->
         
-        <textarea id="contentInput" name="content" rows="20" cols="100"> <?= $quote['answer']  ?></textarea>
-        <script> CKEDITOR.replace('content');</script> 
+        <textarea id="contentInput" name="answer" rows="20" cols="100"> <?= $quote['answer']  ?></textarea>
+        <script> CKEDITOR.replace('answer');</script> 
         <input id="submit" type="submit" value="update" name="submitUpdate">
-        <input onclick="test()" type="submit" name="submitDelete" value="delete" >       
+        <input onclick="test()" type="submit" name="submitDelete" value="delete" >
+
+                    <select id="type" name="type">
+                
+                  <?php while($row = $statementInsert -> fetch()): ?>
+                    <option>    
+                            <?= $row['type']?>
+                    </option>
+                <?php endwhile ?>
+            </select>       
     </form>
+
     <?php endif ?>      
+
     <h5><a href="editFaq.php">back</a></h5>
     </div>
+
 
 </body>
 </html>
