@@ -1,15 +1,43 @@
 <?php
-      // require('database/db_connect.php');
+      session_start();
+      $var = "test";
+      // $_SESSION['search'] = $_GET['name'];
+      $_SESSION['search'] = $var;
+
+      //require('database/db_connect.php');
       $queryCat = "SELECT * FROM categories ORDER BY id";
       $statementCat = $db->prepare($queryCat);
 
       $statementCat->execute();
 
 
-      $queryCat = "SELECT * FROM categories ORDER BY id";
-      $statementCat = $db->prepare($queryCat);
+      // $queryCat = "SELECT * FROM categories ORDER BY id";
+      // $statementCat = $db->prepare($queryCat);
 
-      $statementCat->execute();
+      // $statementCat->execute();
+
+
+      $search = filter_input(INPUT_POST, 'search', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+      if ($_POST) {
+        
+        if(strlen($search)){
+                // echo $_SESSION['search'];      
+                $_SESSION['search'] = $search;
+                echo $_SESSION['search'];
+                header("Location: search.php");
+                // exit;                
+
+
+        } else {
+
+  
+          // ECHO nl2br("Error - ??? \r\n");               
+       
+          //   header("Location: search.php")  ;        
+        }
+
+    }
+   
 
 ?>
 
@@ -26,7 +54,7 @@
     </div>
   </div>
   <a href="betta.php">Betta Types</a>
-    <div class="subnav">
+  <div class="subnav">
     <button class="subnavbtn">Forms</button>
     <div class="subnav-content">
       <a href="#">Login/Register</a>
@@ -35,7 +63,11 @@
        <a href="viewAll.php">View All Questions</a>
       </div>
   </div>
-  
+    <div class="search-container">
+    <form method="post">
+      <input type="text" placeholder="Search.." name="search" >
+    </form>
+  </div>
 </div>
 
 

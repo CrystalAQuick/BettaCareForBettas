@@ -13,6 +13,11 @@ ul {
   opacity: 0.85;
 }
 
+.search-container{
+ padding-top: 10px;
+ float: right;
+ padding-right: 20px;
+}
 li {
   float: left;
   color: white;

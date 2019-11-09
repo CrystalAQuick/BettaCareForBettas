@@ -21,6 +21,7 @@
 	 	<h4>BettaCare4Bettas encourages community invlovement! Register in order to participate on the forms or if you are just looking around, click any of the tabs and find anwsers to your questions!</h4> 	
 	 </div>
 
+<h1><a href="insertImage.php">testPost</h1>
 	
 </body>
 </html>
