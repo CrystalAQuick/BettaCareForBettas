@@ -51,8 +51,7 @@
 
         }
 
-    } else if (isset($_GET['id'])) { // Retrieve quote to be edited, if id GET parameter is in URL.
-        // Sanitize the id. Like above but this time from INPUT_GET.
+    } else if (isset($_GET['id'])) { 
         $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
         
         // Build the parametrized SQL query using the filtered id.

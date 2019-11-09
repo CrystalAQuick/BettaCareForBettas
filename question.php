@@ -1,5 +1,11 @@
 <?php
     require('database/db_connect.php');
+
+        $queryInsert = "SELECT * FROM categories" ;
+
+        $statementInsert = $db->prepare($queryInsert);
+
+        $statementInsert->execute();
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +25,17 @@
          <!--    <label for="content">Content</label> -->
             <textarea id="content" name="content" rows="15" style="resize: none;" placeholder="Text (required) Image (optional)"></textarea>
              <script> CKEDITOR.replace('content');</script>
+                        <select id="type" name="type">
+                
+                  <?php while($row = $statementInsert -> fetch()): ?>
+                    <option>    
+                            <?= $row['type']?>
+                    </option>
+                <?php endwhile ?>
+            </select>
+
             <input type="submit">
+
         </form>  
     </div>
 </body>

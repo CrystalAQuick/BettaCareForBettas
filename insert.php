@@ -2,6 +2,7 @@
 
     $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $type = filter_input(INPUT_POST, 'type', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     // one, two
     require 'database/authenticate.php';
     require('database/db_connect.php');
@@ -10,13 +11,14 @@
         if(strlen($title) >= 1  && strlen($content) >= 1){
 
  
-                $insert = "INSERT INTO questions (title, content) VALUES (:title, :content)";
+                $insert = "INSERT INTO questions (title, content, type) VALUES (:title, :content, :type)";
 
                 $statement = $db->prepare($insert);
                 
        
                 $statement -> bindValue(':title', $title);
                 $statement -> bindValue(':content', $content);
+                $statement -> bindValue(':type', $type);
 
                 $statement->execute();
 

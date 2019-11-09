@@ -1,4 +1,5 @@
 <?php
+
 	    require('database/db_connect.php');
 
 	    $query = "SELECT * FROM questions ORDER BY id" ;
@@ -7,7 +8,24 @@
 
 	    $statement->execute();
 
+      $searchPP = filter_input(INPUT_POST, 'searchPP', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+      if ($_POST) {
+        
+        if(strlen($searchPP)){
+                // echo $_SESSION['search'];      
+                $_SESSION['searchPP'] = $searchPP;
+              //  echo $_SESSION['searchPP'];
+                
+                          //    echo $_SESSION['searchPP'];
+                $query = "SELECT * FROM questions WHERE title LIKE '%{$_SESSION['searchPP']}%' OR content LIKE '%{$_SESSION['searchPP']}%'"  ;
+                $statement = $db->prepare($query);
+                $statement->execute();
 
+               // header("Location: searchQuestions.php");
+          
+                // exit
+        } 
+      }
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +38,11 @@
 	 <?php include('components/navTemp.php'); ?> 
     <div id="wrapper">
     <h1>All Questions</h1>
+        <div class="onRight">
+    <form method="post" name="test">
+      <input type="text" placeholder="Search specific questions" name="searchPP" >
+    </form>
+  </div>
      <?php include('components/sortNav.php'); ?>   
           <?php while($row = $statement -> fetch()): ?>
         <div id="indie">    

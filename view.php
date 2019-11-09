@@ -27,7 +27,7 @@
 	 <?php include('components/navTemp.php'); ?> 
 
     <div id="wrapper">
-    <h1>Recent Questions - a</h1>
+    <h1>Recent Questions</h1>
      	    <?php while($row = $statement -> fetch()): ?>
      	  <div id="indie">  	
       <?php $date = date_create( $row['date']) ?>

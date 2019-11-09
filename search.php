@@ -3,7 +3,7 @@
       require('database/db_connect.php');
       // $queryWild = "SELECT * FROM bettavarieties WHERE Color LIKE '%blue%'"  ;
       // $queryWild = "SELECT * FROM bettavarieties WHERE Color LIKE '%{$_SESSION['search']}%'"  ;
-      
+      $dummy = $_SESSION['search'];
 
       $queryWild = "SELECT * FROM bettavarieties WHERE Color LIKE '%{$_SESSION['search']}%' OR  Pattern LIKE '%{$_SESSION['search']}%' OR finType LIKE '%{$_SESSION['search']}%' OR info LIKE  '%{$_SESSION['search']}%'"  ;
       $statementWild = $db->prepare($queryWild);
@@ -72,7 +72,7 @@
 		   <?php endwhile ?>    	    
     <?php endif; ?> 
 </div>
-<h4><a href="">Not What youre looking for? Try seacrching this</a> </h4>
+<h4><a href="https://lmgtfy.com/?q=<?= $dummy ?>">Not What youre looking for? Try seacrching this</a> </h4>
 <h2><a href="index.php">back to home</a> </h2>
    <!--  <?= $_SESSION['search']?> -->
 </body>

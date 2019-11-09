@@ -28,13 +28,7 @@
                 // exit;                
 
 
-        } else {
-
-  
-          // ECHO nl2br("Error - ??? \r\n");               
-       
-          //   header("Location: search.php")  ;        
-        }
+        } 
 
     }
    
@@ -65,7 +59,7 @@
   </div>
     <div class="search-container">
     <form method="post">
-      <input type="text" placeholder="Search.." name="search" >
+      <input type="text" placeholder="Search Entire Site" name="search" >
     </form>
   </div>
 </div>
