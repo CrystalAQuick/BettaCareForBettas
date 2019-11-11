@@ -32,7 +32,7 @@
 
     }
    
-
+    $test = 1;
 ?>
 
 <div class="navbar">
@@ -51,17 +51,21 @@
   <div class="subnav">
     <button class="subnavbtn">Forms</button>
     <div class="subnav-content">
-      <a href="#">Login/Register</a>
+      <a href="login.php">Login/Register</a>
       <a href="question.php">Ask a question</a>
       <a href="view.php">View Recent</a>
        <a href="viewAll.php">View All Questions</a>
       </div>
   </div>
+  <a href="login.php">Login/Register</a>
     <div class="search-container">
     <form method="post">
       <input type="text" placeholder="Search Entire Site" name="search" >
     </form>
   </div>
+    <?php if($test != 1): ?>
+          <a href="indexHello.php">Logout</a>
+    <?php endif; ?> 
 </div>
 
 

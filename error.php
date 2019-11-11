@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="styles/error.css">
 </head>
 <body>
-	<?php include('components/nav.php'); ?>
+
 	<div>
 		<div id="wrapper">
 				<h1>Error: 401 Unauthorized</h1>	
