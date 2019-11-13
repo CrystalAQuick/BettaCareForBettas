@@ -9,23 +9,45 @@
 	    $statement->execute();
 
       $searchPP = filter_input(INPUT_POST, 'searchPP', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+     
+      $type = filter_input(INPUT_POST, 'cat', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+     
+
+      $queryDrop = "SELECT type FROM categories ORDER BY id" ;
+      $statementDrop = $db->prepare($queryDrop);
+      $statementDrop->execute();
+
+  
+
       if ($_POST) {
         
         if(strlen($searchPP)){
                 // echo $_SESSION['search'];      
                 $_SESSION['searchPP'] = $searchPP;
+                // $_SESSION['cat'] = $cat;
               //  echo $_SESSION['searchPP'];
-                
+                           
                           //    echo $_SESSION['searchPP'];
-                $query = "SELECT * FROM questions WHERE title LIKE '%{$_SESSION['searchPP']}%' OR content LIKE '%{$_SESSION['searchPP']}%'"  ;
+               // $query = "SELECT * FROM questions WHERE type = :type" ; 
+                 $query = "SELECT * FROM questions WHERE type = :type AND title LIKE '%{$_SESSION['searchPP']}%' OR type = :type AND content LIKE '%{$_SESSION['searchPP']}%'" ; 
+
+                // $query = "SELECT * FROM questions WHERE title LIKE '%{$_SESSION['searchPP']}%' OR content LIKE '%{$_SESSION['searchPP']}%' AND  type = :type" ;
+
+                // $query = "SELECT * FROM questions WHERE title LIKE '%{$_SESSION['searchPP']}%' OR content LIKE '%{$_SESSION['searchPP']}%'   " ;
+
+
                 $statement = $db->prepare($query);
+
+                $statement->bindValue(':type', $type);
                 $statement->execute();
 
-               // header("Location: searchQuestions.php");
-          
+               // header("Location: searchQuestions.php");       
                 // exit
+
+                
         } 
       }
+
 ?>
 
 <!DOCTYPE html>
@@ -39,9 +61,18 @@
     <div id="wrapper">
     <h1>All Questions</h1>
         <div class="onRight">
-    <form method="post" name="test">
+    <form method="post" >
+      <select name="cat">
+        <option>All Categories</option>
+            <?php while($row = $statementDrop -> fetch()): ?>
+              <option>
+                <?= $row['type'] ?>            
+              </option>
+            <?php endwhile ?>
+      </select>
       <input type="text" placeholder="Search specific questions" name="searchPP" >
     </form>
+
   </div>
      <?php include('components/sortNav.php'); ?>   
           <?php while($row = $statement -> fetch()): ?>

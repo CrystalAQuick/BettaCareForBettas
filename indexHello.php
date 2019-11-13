@@ -13,7 +13,7 @@
 	 <?php include('components\navTemp.php'); ?>
 	  
 	 <div id="wrapper">
-	 	<h1>Hello, -username from session -</h1>
+	 	<h1>Hello, <?= $_SESSION['email'] ?></h1>
 	 	<h1>Betta Fish Care: First Time Owners Guide</h1>
 	 	<h3>Overview</h3>
 	 	<h4>Are you a new betta owner? Are you a fish enthusiast? Or are you just trying to find a resource in order to become more educated on the correct care of the responsibilty of owning a betta?</h4>

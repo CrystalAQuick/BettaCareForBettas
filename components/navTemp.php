@@ -63,9 +63,9 @@
       <input type="text" placeholder="Search Entire Site" name="search" >
     </form>
   </div>
-    <?php if($test != 1): ?>
-          <a href="indexHello.php">Logout</a>
-    <?php endif; ?> 
+<!--     <?php if($_SESSION['email'] != ''): ?>
+          <a href="login.php">Logout</a>
+    <?php endif; ?>  -->
 </div>
 
 

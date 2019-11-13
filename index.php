@@ -1,5 +1,6 @@
 <?php
    require('database/db_connect.php');
+   // $var = $_SESSION['email'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,8 +14,11 @@
 	 <?php include('components\navTemp.php'); ?>
 	  
 	 <div id="wrapper">
-	 	
+<!-- 	 	<?php if($var != ''): ?>
+	 		<h1>Welcome back, <?= $var ?>!</h1>
+        <?php endif;?> 	  -->	
 	 	<h1>Betta Fish Care: First Time Owners Guide</h1>
+
 	 	<h3>Overview</h3>
 	 	<h4>Are you a new betta owner? Are you a fish enthusiast? Or are you just trying to find a resource in order to become more educated on the correct care of the responsibilty of owning a betta?</h4>
 	 	<h4>Youre in the right place! BettaCare4Betta is a not-for-profit orgainization that is dedicated to the education of proper care and living conditions for betta fish. </h4>

@@ -1,5 +1,5 @@
 <?php
-    require('database/db_connect.php');
+       require('database/db_connect.php');
 
         $queryInsert = "SELECT * FROM categories" ;
 

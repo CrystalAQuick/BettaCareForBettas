@@ -35,6 +35,8 @@
 		  		
 		        $_SESSION['email'] = $row['username'];
 		         echo 'hello, ' . $_SESSION['email'];
+		         header('Location: indexHello.php');
+		         exit();
 		  	}
 		  	else{
 		  		echo 'password is not correct';

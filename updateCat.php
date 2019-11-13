@@ -50,7 +50,7 @@
     <link rel="stylesheet" type="text/css" href="styles/questions.css">
 </head>
 <body>
-         <?php include('components/nav.php'); ?> 
+         <?php include('components/navTemp.php'); ?> 
     <div id="wrapper">
     <h1>Update Category</h1>
         <form method="post" action="updateCat.php">
