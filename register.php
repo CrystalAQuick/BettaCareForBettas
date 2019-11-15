@@ -1,6 +1,6 @@
 <?php 
 
-
+	     session_start();
 	     require('database/db_connect.php');
 	    // $queryLogin = "SELECT * FROM users ORDER BY id" ;
 
@@ -18,24 +18,27 @@
 	
 	
 			if(empty($username) || empty($email) || empty($password) || empty($passwordRepeat)){
-				header("Location: register.php?error=emptyfields&username=".$username . "&email=".$email );
-				exit();
+				// header("Location: register.php?error=emptyfields&username=".$username . "&email=".$email );
+				// exit();
 			}
 			else if ( !filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $username)   ){
-						header("Location: register.php?error=invalidEmailAndUsername" );
-				exit();
+				// header("Location: register.php?error=invalidEmailAndUsername" );
+				// exit();
+						
 			}
 			else if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-				header("Location: register.php?error=invalidEmail&username=".$username );
-				exit();
+				//header("Location: register.php?error=invalidEmail&username=".$username );
+				echo 'Invalid Email type. Try again.';
+				//exit();
 			}
 			else if (!preg_match("/^[a-zA-Z0-9]*$/", $username) ){
-				header("Location: register.php?error=invalidEmail&email=".$email );
-				exit();
+			//	header("Location: register.php?error=invalidEmail&email=".$email );
+				//exit();
 			}
 			else if($password !== $passwordRepeat){
-				header("Location: register.php?error=passwordDoNOTmatch&username=".$username . "&email=".$email);
-				exit();
+				//header("Location: register.php?error=passwordDoNOTmatch&username=".$username . "&email=".$email);
+				echo 'Passwords do not match. please try again.';
+				//exit();
 			}
 			else{
 
@@ -50,11 +53,14 @@
 	                $statementTe -> bindValue(':password', $hashPass);
 				    $statementTe->execute();
 				    		// echo $username
+				    $email = $_POST['username'];
+				    $_SESSION['email'] = $email;
 					header("Location: indexHello.php");
 					exit();
 
 			}
 		
+
 		}
 
 ?>

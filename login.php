@@ -42,8 +42,10 @@
 		  		echo 'password is not correct';
 
 		  } 
-		  	}
+		
 
+		}
+	        echo 'Invalid login attempt. Please try again.';
 
 
 

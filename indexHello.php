@@ -10,7 +10,40 @@
 </head>
 <body>
 	 
-	 <?php include('components\navTemp.php'); ?>
+<!-- 	 <?php include('components\navTemp.php'); ?> -->
+
+<div class="navbar">
+  <a href="">XX</a>
+  <a href="index.php">Home</a>
+  <div class="subnav">
+    <button class="subnavbtn">FAQ</button>
+    <div class="subnav-content">
+       <a href="faq.php">All Questions</a>
+          <?php while($row = $statementCat -> fetch()): ?>
+             <a href="faqLike.php?type=<?=$row['type']?>">  <?= $row['type'] ?> </a>             
+          <?php endwhile ?>  
+    </div>
+  </div>
+  <a href="betta.php">Betta Types</a>
+  <div class="subnav">
+    <button class="subnavbtn">Forms</button>
+    <div class="subnav-content">
+      <a href="login.php">Login/Register</a>
+      <a href="question.php">Ask a question</a>
+      <a href="view.php">View Recent</a>
+       <a href="viewAll.php">View All Questions</a>
+      </div>
+  </div>
+ <!--  <a href="login.php">Login/Register</a> -->
+    <div class="search-container">
+    <form method="post">
+      <input type="text" placeholder="Search Entire Site" name="search" >
+    </form>
+  </div>
+    <?php if($_SESSION['email'] != ''): ?>
+          <a href="logOut.php">Logout</a>
+    <?php endif; ?> 
+</div>
 	  
 	 <div id="wrapper">
 	 	<h1>Hello, <?= $_SESSION['email'] ?></h1>

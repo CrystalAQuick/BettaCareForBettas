@@ -22,25 +22,44 @@
       if ($_POST) {
         
         if(strlen($searchPP)){
-                // echo $_SESSION['search'];      
-                $_SESSION['searchPP'] = $searchPP;
-                // $_SESSION['cat'] = $cat;
-              //  echo $_SESSION['searchPP'];
-                           
-                          //    echo $_SESSION['searchPP'];
-               // $query = "SELECT * FROM questions WHERE type = :type" ; 
-                 $query = "SELECT * FROM questions WHERE type = :type AND title LIKE '%{$_SESSION['searchPP']}%' OR type = :type AND content LIKE '%{$_SESSION['searchPP']}%'" ; 
+                // echo $_SESSION['search'];   
 
-                // $query = "SELECT * FROM questions WHERE title LIKE '%{$_SESSION['searchPP']}%' OR content LIKE '%{$_SESSION['searchPP']}%' AND  type = :type" ;
+                if($_POST['cat'] == 0){
 
-                // $query = "SELECT * FROM questions WHERE title LIKE '%{$_SESSION['searchPP']}%' OR content LIKE '%{$_SESSION['searchPP']}%'   " ;
+                  // looks for all categories              
+
+                    $_SESSION['searchPP'] = $searchPP;
+                    // $_SESSION['cat'] = $cat;
+                  //  echo $_SESSION['searchPP'];
+                               
+                    //    echo $_SESSION['searchPP'];
+                   // $query = "SELECT * FROM questions WHERE type = :type" ; 
+                     $query = "SELECT * FROM questions WHERE  title LIKE '%{$_SESSION['searchPP']}%' OR type = :type AND content LIKE '%{$_SESSION['searchPP']}%'" ; 
+
+                    // $query = "SELECT * FROM questions WHERE title LIKE '%{$_SESSION['searchPP']}%' OR content LIKE '%{$_SESSION['searchPP']}%'   " ;
 
 
-                $statement = $db->prepare($query);
+                    $statement = $db->prepare($query);
 
-                $statement->bindValue(':type', $type);
-                $statement->execute();
+                    $statement->bindValue(':type', $type);
+                    $statement->execute();
 
+
+
+
+                }
+                else{
+                    $_SESSION['searchPP'] = $searchPP;
+                    $query = "SELECT * FROM questions WHERE type = :type AND title LIKE '%{$_SESSION['searchPP']}%' OR type = :type AND content LIKE '%{$_SESSION['searchPP']}%'" ; 
+                 
+                    $statement = $db->prepare($query);
+
+                    $statement->bindValue(':type', $type);
+                    $statement->execute();
+
+
+
+                }
                // header("Location: searchQuestions.php");       
                 // exit
 
@@ -62,8 +81,8 @@
     <h1>All Questions</h1>
         <div class="onRight">
     <form method="post" >
-      <select name="cat">
-        <option>All Categories</option>
+      <select name="cat">      
+        <option value="0">All Categories</option>
             <?php while($row = $statementDrop -> fetch()): ?>
               <option>
                 <?= $row['type'] ?>            
