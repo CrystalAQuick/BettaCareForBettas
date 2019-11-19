@@ -14,9 +14,7 @@
 	 <?php include('components\navTemp.php'); ?>
 	  
 	 <div id="wrapper">
-<!-- 	 	<?php if($var != ''): ?>
-	 		<h1>Welcome back, <?= $var ?>!</h1>
-        <?php endif;?> 	  -->	
+	
 	 	<h1>Betta Fish Care: First Time Owners Guide</h1>
 
 	 	<h3>Overview</h3>
