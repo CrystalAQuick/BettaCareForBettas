@@ -20,11 +20,11 @@
   
 
       if ($_POST) {
-        
+        // echo $_POST['cat'];
         if(strlen($searchPP)){
                 // echo $_SESSION['search'];   
 
-                if($_POST['cat']){
+                if($_POST['cat'] == -1){
 
                   // looks for all categories              
 
@@ -34,45 +34,31 @@
                                
                     //    echo $_SESSION['searchPP'];
                    // $query = "SELECT * FROM questions WHERE type = :type" ; 
-
-                     // $query = "SELECT * FROM questions WHERE  title LIKE '%{$_SESSION['searchPP']}%' OR type = :type AND content LIKE '%{$_SESSION['searchPP']}%'" ; //this
-
-
-                      $query = "SELECT * FROM questions WHERE type = :type AND title LIKE '%{$_SESSION['searchPP']}%' AND content LIKE '%{$_SESSION['searchPP']}%'" ; 
-             
-
+                     $query = "SELECT * FROM questions WHERE  title LIKE '%{$_SESSION["searchPP"]}%' OR type = :type AND content LIKE '%{$_SESSION["searchPP"]}%'" ; 
 
                     // $query = "SELECT * FROM questions WHERE title LIKE '%{$_SESSION['searchPP']}%' OR content LIKE '%{$_SESSION['searchPP']}%'   " ;
-
+                      // ECHO $query;
+                      // ECHO "regular";
 
                     $statement = $db->prepare($query);
 
                     $statement->bindValue(':type', $type);
-
-                    // $id = $_POST['cat'];
-                    // $statement->bindValue(':id', $type, PDO::PARAM_INT);
-                                      
-
-
                     $statement->execute();
+
+
+
 
                 }
                 else{
 
                     $_SESSION['searchPP'] = $searchPP;
-                    // $query = "SELECT * FROM questions WHERE type = :type AND title LIKE '%{$_SESSION['searchPP']}%' OR type = :type AND content LIKE '%{$_SESSION['searchPP']}%'" ; 
+                    $query = "SELECT * FROM questions WHERE type = :type AND (title LIKE '%{$_SESSION["searchPP"]}%'  OR content LIKE '%{$_SESSION["searchPP"]}%' )" ; 
                  
 
-
-
-                    $query = "SELECT * FROM questions WHERE  title LIKE '%{$_SESSION['searchPP']}%' type = :type AND content LIKE '%{$_SESSION['searchPP']}%' AND id = :id" ; 
-
+                    // ECHO "inside the else";
                     $statement = $db->prepare($query);
 
                     $statement->bindValue(':type', $type);
-                    $id = $_POST['cat'];
-                    $statement->bindValue(':id', $type, PDO::PARAM_INT);
-                                      
                     $statement->execute();
 
 
@@ -100,9 +86,9 @@
         <div class="onRight">
     <form method="post" >
       <select name="cat">      
-  <!--       <option>All Categories</option> -->
+        <option value="-1">All Categories</option>
             <?php while($row = $statementDrop -> fetch()): ?>
-              <option value="<?php echo $row['id'] ?>">
+              <option>
                 <?= $row['type'] ?>            
               </option>
             <?php endwhile ?>
