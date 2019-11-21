@@ -1,13 +1,12 @@
   <h4> <?= htmlspecialchars_decode($rowR['content'])  ?></h4>
 
 
-          <?php while($rowR = $statementReply -> fetch()): ?>
-            <?php if($rowR['content'] != $row['id']): ?>
-              <h4> <?= htmlspecialchars_decode($rowR['content'])  ?></h4> 
+            <?php while($rowR = $statementReply -> fetch()): ?>
+            <?php if($rowR['postId'] == $row['id']): ?>
+              <h4> <?= $rowR['content']  ?></h4> 
              
             <?php endif; ?>
           <?php endwhile ?>
-
 
 
 
@@ -68,6 +67,61 @@
                    <h5><?= print_r($rel['content']) ?> </h5>
 
           <?php endif; ?> -->
+
+
+           <?php else: ?>  
+             <?php  $count =  0 ?>      
+                  <h4> <?= $rel[$count]['content'] ?></h4> 
+                    <!--  <?php  $count + 1 ?> -->
+          
+          <?php  endif; ?>  
+
+
+          <?php if($row['id']):  ?>
+
+            <h4> TEST. The row NUMBER IS == <?= $q = $row['id']?> </h4> 
+          <!--   <h3> <?= $rel['postId'] ?></h3> -->
+     
+
+<!--             <?php if($q == $rel['postId']): ?>          
+                 <h4> <?= $rel['content'] ?> hi</h4>  
+            <?php  endif; ?>   
+ -->
+                      <?php while($rowR = $statementReply -> fetch()): ?>
+                          <?php if($q == $rowR['postId']): ?>          
+                               <h4> <?= $rowR['content'] ?> hi</h4>  
+                          <?php  endif; ?>   
+
+
+                                   <!--  <h3> <?= $rowR ?></h3> -->
+          <!--                 <?php if($rowR['postId'] == $row['id']): ?>
+                                <h4> <?= $rowR['content']  ?>  hello</h4> 
+
+                          <?php endif; ?> -->
+                          
+                      <?php endwhile ?>
+  
+
+
+          <?php endif; ?>
+
+
+ <?php while($rowR = $statementReply->fetch()): ?>
+                         <!--      <?php $postId == $rowR['postId'] ?>  -->
+                              <!-- <h4> <?= $rowR['content'] ?>  THIS == <?= $rowR['postId'] ?> </h4>  -->                         
+                              <?php if($questionId == $rowR['postId']) : ?> 
+
+                                <h4> <?= $rowR['content'] ?>  THIS == <?= $rowR['postId'] ?> </h4>  
+                                
+                              <?php  endif; ?>  
+
+                             <!--  <h2><?= $rowR['postId'] ?></h2> -->
+
+                    <?php endwhile ?>
+                  
+
+
+
 
 
 

@@ -7,11 +7,10 @@
 
 	    $statement->execute();
 
-//      $queryReply = "SELECT * FROM questions JOIN reply ON reply.postId = questions.id " ;
+     // $queryReply = "SELECT * FROM questions JOIN reply ON reply.postId = questions.id " ;
 
-      //$queryReply = "SELECT * FROM questions JOIN reply ON reply.postId = questions.id " ;
-     // $count  = 0;
-     // $postId = 0;
+     //  $queryReply = "SELECT * FROM questions JOIN reply ON reply.postId = questions.id " ;
+      $count  = 0;
       //$id = ;
 
       $queryReply = "SELECT * FROM reply " ;
@@ -21,8 +20,8 @@
       $statementReply = $db->prepare($queryReply);
      // $statementReply -> bindValue(':id', $id);
       $statementReply->execute();
-    //  $rel = $statementReply->fetchAll();
-     //  $rel = $statementReply->fetch();
+     $rel = $statementReply->fetchAll();
+    //   $rel = $statementReply->fetch();
       
     //  print_r($test[$count]['postId']);
       // print_r($rel['postId']);
@@ -62,29 +61,31 @@
         <?php endif;?>
         <h5><a href="reply.php?id=<?= $row['id'] ?>">Comment</a></h5>
 
-
-
-
-      <?php if($row['id']):  ?>
+          <?php if($row['id']):  ?>
+            <h4> TEST. The row NUMBER IS == <?= $row['id']?> </h4> 
            
-            <h4> Id == <?= $questionId = $row['id']?> </h4> 
-            <?php $work =  $statementReply->fetch() ?> 
-        
-            <h4> <?= $work['content'] ?> </h4>   
+            <?php if($row['id'] == $rel[$count]['postId']): ?>
+              
+            
+               <h4> <?= $rel[$count]['content'] ?></h4>  
 
-                  
+     <?php  $count++ ?>
+          <?php  endif; ?>         
+
+
+          <?php endif; ?>
 
 
 
 
-                        <!-- <?php $work =  $statementReply->fetch() ?>
-                       <h4> <?= $work['content'] ?> </h4>   -->
-      <?php endif; ?>
 
+
+<!-- <?= print_r($rel[0]['postId']) ?> -->
+ 
      </div>  
     <?php endwhile ?>
- 
-      
+       
+  
   </div>
 </body>
 </html> 
