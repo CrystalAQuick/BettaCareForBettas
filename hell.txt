@@ -1,0 +1,74 @@
+  <h4> <?= htmlspecialchars_decode($rowR['content'])  ?></h4>
+
+
+          <?php while($rowR = $statementReply -> fetch()): ?>
+            <?php if($rowR['content'] != $row['id']): ?>
+              <h4> <?= htmlspecialchars_decode($rowR['content'])  ?></h4> 
+             
+            <?php endif; ?>
+          <?php endwhile ?>
+
+
+
+
+          <?php while($rowR = $statementReply -> fetch()): ?>
+
+          <?php endwhile ?>   
+
+
+        <?php if($row['id']): ?>
+
+         <h4> TEST. The row NUMBER IS == <?= $row['id']?></h4> 
+
+           <h4> <?= htmlspecialchars_decode($re['content'])  ?></h4>
+
+        <?php endif; ?>
+
+
+
+          <?php if($row['id'] == $rel[$count]['postId'] ): ?>
+
+           <h4> TEST. The row NUMBER IS == <?= $row['id']?></h4> 
+
+           <h4> <?= htmlspecialchars_decode($re[$count-1]['content'])   ?></h4> 
+
+          <?php endif; ?>
+
+
+          <?php if($row['id'] == $rel['postId']): ?>
+       
+           <h4> TEST. The row NUMBER IS == <?= $row['id']?></h4> 
+
+           <h4> <?= htmlspecialchars_decode($rel['content'] )   ?> </h4> 
+
+          <?php endif; ?>
+
+
+          <?php if($row['id'] == $rel['postId']): ?>
+       
+           <h4> TEST. The row NUMBER IS == <?= $row['id']?></h4> 
+
+           <h4> <?= htmlspecialchars_decode($rel['content'] )   ?> </h4> 
+
+          <?php endif; ?>
+
+
+           <?php if($row['id']): ?>
+       
+           <h4> TEST. The row NUMBER IS == <?= $row['id']?></h4> 
+
+          <!--  <h4> <?= htmlspecialchars_decode($rel['postId'] )  ?> </h4>  -->
+                  
+
+          <?php endif; ?>
+
+
+<!--            <?php if($row['id'] == $rel['postId'] ): ?>
+       
+                   <h5><?= print_r($rel['content']) ?> </h5>
+
+          <?php endif; ?> -->
+
+
+
+

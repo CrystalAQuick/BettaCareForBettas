@@ -23,6 +23,9 @@
                         array('title' => array('min_range' => 1,
                                                 'max_range' =>140))) ;
 
+
+
+
     
 ?>
 
@@ -32,30 +35,31 @@
     <?php while($row2 = $statement2 -> fetch()): ?>
       <title> <?= $row2['title'] ?> </title>    
     <?php endwhile ?>
-    <link rel="stylesheet" type="text/css" href="styles/view.css" />
+    <link rel="stylesheet" type="text/css" href="styles/questions.css" />
 </head>
 <body>
-  <?php include('components/nav.php'); ?>   
+  <?php include('components/navTemp.php'); ?>   
           <h2>Commment on Post</h2> 
           <?php while($row = $statement -> fetch()): ?>
         <div id="indie">    
       <?php $date = date_create( $row['date']) ?>
-      <h3><?= $row['title'] ?> </h3>
+      <h3><?= htmlspecialchars_decode($row['title']) ?> </h3>
      
       <h5>Created on  <?= date_format($date,"F d, Y g:i a" ) ?>
-      <a href="edit.php?id=<?=$row['id']?>">-edit</a></h5>
+     
       <?php if( !is_null($row['dateUpdated'])): ?>
-      <?php $date = date_create( $row['dateUpdated']) ?>
+      <?php $date = date_create( htmlspecialchars_decode($row['dateUpdated'])) ?>
             <h5>*Updated* at <?= date_format($date,"F d, Y g:i a" ) ?>
       <?php endif;?> 
 
      
-        <h4> <?= $row['content']  ?></h4> 
+        <h4> <?= htmlspecialchars_decode($row['content'])  ?></h4> 
 
       </div>   
     <?php endwhile ?>
         <form method="post" action="insertReply.php">
          <!--    <label for="content">Content</label> -->
+         <input hidden value="<?= $_GET['id'] ?>" name="postId">
             <textarea id="content" name="content" rows="15" style="resize: none;" placeholder="Text (required) Image (optional)"></textarea>
             <input type="submit">
         </form>  

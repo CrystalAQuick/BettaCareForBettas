@@ -10,11 +10,12 @@
         if(strlen($reply) >= 1){
 
  
-                $insert = "INSERT INTO reply (content) VALUES (:content)";
+                $insert = "INSERT INTO reply (content, postId) VALUES (:content, :postId)";
 
                 $statement = $db->prepare($insert);
                 
                 $statement -> bindValue(':content', $reply);
+                $statement -> bindValue(':postId', $_POST['postId']);
 
                 $statement->execute();
 
