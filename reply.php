@@ -60,10 +60,22 @@
 
       </div>   
     <?php endwhile ?>
+
         <form method="post" action="insertReply.php">
          <!--    <label for="content">Content</label> -->
          <input hidden value="<?= $_GET['id'] ?>" name="postId">
-            <textarea id="content" name="content" rows="15" style="resize: none;" placeholder="Text (required) Image (optional)"   ></textarea>
+            <textarea id="content" name="content" rows="15" style="resize: none;" placeholder="Text (required) Image (optional)" > 
+          <?php if(isset($_SESSION['words'])): ?>
+              <?php if($_SESSION['words'] == ''): ?>
+                <?php $_SESSION['words']  == ''?>
+                <?php else: ?> 
+                  <?= $_SESSION['words'] ?>                  
+                <?php endif; ?>
+
+          <?php endif; ?>
+
+
+              </textarea>
 <!--              <textarea id="content" name="content" rows="15" style="resize: none;" placeholder="Text (required) Image (optional)" <?= $emp ?>  ></textarea> -->
             <input name="captcha" type="text" placeholder="captcha text case sensitive">
             <img src="captcha.php" />

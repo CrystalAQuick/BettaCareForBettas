@@ -1,13 +1,14 @@
 <?php
+      session_start();
+      $_SESSION = array();
+      session_destroy();
+
       require('database/db_connect.php');
 
       $postsSelect = $db->prepare("SELECT * FROM questions");
       $postsSelect->execute();
       $posts = $postsSelect->fetchAll();
 
-      foreach($posts as $post){
-        // $_SESSION['test'] = $post['id'];
-      }
 
 
 

@@ -47,7 +47,9 @@
                 $postContent = $_POST['content'];
                 
                 //echo $postContent;
-               header("Location: reply.php?id=$temp&captchaError=$postContent")  ; 
+                $_SESSION['words'] = $postContent;
+                echo 'test session ' . $_SESSION['words'];
+                header("Location: reply.php?id=$temp")  ; 
                //header("Location: reply.php?=17")  ;     
 
 
