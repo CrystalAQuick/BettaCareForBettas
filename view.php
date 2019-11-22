@@ -6,7 +6,7 @@
       $posts = $postsSelect->fetchAll();
 
       foreach($posts as $post){
-        
+        // $_SESSION['test'] = $post['id'];
       }
 
 
@@ -31,11 +31,13 @@
             <h4><?= htmlspecialchars_decode($post['content']) ?></h4>
             <?php $date = date_create( $post['date']) ?>
             <h5>Created on  <?= date_format($date,"F d, Y g:i a" ) ?> <a href="edit.php?id=<?=$post['id']?>">-edit</a></h5>
-            <h5><a href="reply.php?id=<?= $post['id'] ?>">Comment</a></h5>
+            <h5><a href="reply.php?id=<?= $post['id'] ?>">Comment</a>
+              <?php $_SESSION['test'] = $post['id']?></h5>
               <?php  $repliesSelect = $db->prepare("SELECT * FROM reply WHERE postId = :postId"); $repliesSelect->bindValue(':postId', $post['id']); $repliesSelect->execute(); $replies = $repliesSelect->fetchAll(); ?>
          
               <?php foreach($replies as $reply): ?>
-                <h2>COMMENT--- <?= $reply['content'] ?></h2>
+               
+                <h5><?= $reply['content'] ?></h5>
                
               <?php endforeach ?>
             

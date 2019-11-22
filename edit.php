@@ -106,7 +106,8 @@
         <textarea id="contentInput" name="content" rows="20" cols="100"> <?= $quote['content']  ?></textarea> 
                      <script> CKEDITOR.replace('content');</script>
         <input id="submit" type="submit" value="update" name="submitUpdate">
-        <input onclick="test()" type="submit" name="submitDelete" value="delete" >       
+        <input onclick="test()" type="submit" name="submitDelete" value="delete" >
+        <!-- onsubmit="return confirm('Are you sure you want to delete this recipe?')"   -->     
     </form>
 	<?php endif ?>    	
     </div>

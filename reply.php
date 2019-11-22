@@ -1,5 +1,7 @@
 <?php
 
+
+
       require('database/db_connect.php');
       // this is selecting the post whoses text is larger than 200 in length and displaying the entire text.
       $query = "SELECT * FROM questions WHERE id = {$_GET['id']}" ;
@@ -26,6 +28,7 @@
 
 
 
+
     
 ?>
 
@@ -39,7 +42,7 @@
 </head>
 <body>
   <?php include('components/navTemp.php'); ?>   
-          <h2>Commment on Post</h2> 
+          <h1>Commment on Post</h1> 
           <?php while($row = $statement -> fetch()): ?>
         <div id="indie">    
       <?php $date = date_create( $row['date']) ?>
@@ -60,10 +63,18 @@
         <form method="post" action="insertReply.php">
          <!--    <label for="content">Content</label> -->
          <input hidden value="<?= $_GET['id'] ?>" name="postId">
-            <textarea id="content" name="content" rows="15" style="resize: none;" placeholder="Text (required) Image (optional)"></textarea>
+            <textarea id="content" name="content" rows="15" style="resize: none;" placeholder="Text (required) Image (optional)"   ></textarea>
+<!--              <textarea id="content" name="content" rows="15" style="resize: none;" placeholder="Text (required) Image (optional)" <?= $emp ?>  ></textarea> -->
+            <input name="captcha" type="text" placeholder="captcha text case sensitive">
+            <img src="captcha.php" />
+
+            
             <input type="submit">
+
         </form>  
       <h1><a href="viewAll.php">Return to all questions.</a></h1>
+
+    
     </div>
 </body>
 </html> 
