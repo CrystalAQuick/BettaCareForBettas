@@ -57,7 +57,9 @@
        <a href="viewAll.php">View All Questions</a>
       </div>
   </div>
+      <a href="gallery.php">Gallery</a>
   <a href="login.php">Login/Register</a>
+    
     <div class="search-container">
     <form method="post">
       <input type="text" placeholder="Search Entire Site" name="search" >

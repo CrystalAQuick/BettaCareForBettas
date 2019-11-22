@@ -50,7 +50,8 @@
                 $_SESSION['words'] = $postContent;
                 echo 'test session ' . $_SESSION['words'];
                 header("Location: reply.php?id=$temp")  ; 
-               //header("Location: reply.php?=17")  ;     
+               //header("Location: reply.php?=17")  ; 
+                   
 
 
 

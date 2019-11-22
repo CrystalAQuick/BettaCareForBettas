@@ -5,7 +5,7 @@
 
       require('database/db_connect.php');
 
-      $postsSelect = $db->prepare("SELECT * FROM questions");
+      $postsSelect = $db->prepare("SELECT * FROM questions ORDER BY id DESC");
       $postsSelect->execute();
       $posts = $postsSelect->fetchAll();
 
@@ -25,9 +25,9 @@
 
   <div id="wrapper">
       <h1>Recent Questions</h1>
-   
+  
             <?php foreach($posts as $post): ?>
-<div id="indie">
+ <div id="indie">
             <h4><?= $post['title'] ?></h4> 
             <h4><?= htmlspecialchars_decode($post['content']) ?></h4>
             <?php $date = date_create( $post['date']) ?>
@@ -35,7 +35,11 @@
             <h5><a href="reply.php?id=<?= $post['id'] ?>">Comment</a>
               <?php $_SESSION['test'] = $post['id']?></h5>
               <?php  $repliesSelect = $db->prepare("SELECT * FROM reply WHERE postId = :postId"); $repliesSelect->bindValue(':postId', $post['id']); $repliesSelect->execute(); $replies = $repliesSelect->fetchAll(); ?>
-         
+             
+             <!--  <img src="uploads/classySanic.png"> -->
+
+
+          <!--  <img src="uploads/"> -->
               <?php foreach($replies as $reply): ?>
                
                 <h5><?= $reply['content'] ?></h5>

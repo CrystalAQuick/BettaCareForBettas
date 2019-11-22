@@ -19,7 +19,7 @@
          <?php include('components/navTemp.php'); ?> 
     <div id="wrapper">
     <h1>Ask a Question!</h1>
-        <form method="post" action="insert.php">
+        <form method="post" action="insert.php" enctype="multipart/form-data">
             <!-- <label for="title">Title</label> -->
             <input id="title" name="title" placeholder="Title">
          <!--    <label for="content">Content</label> -->
@@ -33,7 +33,8 @@
                     </option>
                 <?php endwhile ?>
             </select>
-
+            <input type="file" name="file">
+            <!-- <button type="submit">UPLOAD</button> -->
             <input type="submit">
 
         </form>  
