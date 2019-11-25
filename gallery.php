@@ -13,21 +13,8 @@
     $statementGallery->execute();
     $images = $statementGallery->fetchAll();
 
-    if(isset($_POST['submit'])){
+    if(isset($_POST['submit'] )){
 
-        if(strlen($title) >= 1  && strlen($about) >= 1){
-
-            $insertStuff = "INSERT INTO gallery (title, about) VALUES (:title, :about)";
-
-            $statementStuff = $db->prepare($insertStuff);
-            
-
-            $statementStuff -> bindValue(':title', $title);
-            $statementStuff -> bindValue(':about', $about);
-                       // $statementStuff -> bindValue(':image', $image);
-
-            $statementStuff->execute();
-        }
         header("Location: gallery.php");
     }
 
@@ -58,6 +45,8 @@
         
         return $file_extension_is_valid && $mime_type_is_valid;
     }
+
+
     
     $image_upload_detected = isset($_FILES['image']) && ($_FILES['image']['error'] === 0);
     $upload_error_detected = isset($_FILES['image']) && ($_FILES['image']['error'] > 0);
@@ -80,30 +69,34 @@
                // echo $anImage;
                 $extend = "." . $anImage;
                 $image = new \Gumlet\ImageResize("uploads/" . $image_filename);
-             
-             $fileExt = explode('.', $image_filename);
-            $fileActualExt = strtolower(end($fileExt));
+
+                $fileExt = explode('.', $image_filename);
+                $fileActualExt = strtolower(end($fileExt));
 
                 $image->resizeToBestFit(100, 100);    
                 $image->save("uploads/". "{$image_filename}");
-             //   $image->save("uploads/". "{$title}" .".". "{$fileActualExt}");
-            
+                unlink("uploads/". "{$image_filename}"); // actual file name
+                //   $image->save("uploads/". "{$title}" .".". "{$fileActualExt}");
+
 
                 $uniqueName =  uniqid('', false);
                 $image->save("uploads/"."{$uniqueName}" ."{$image_filename}");
                 // $image2->save("uploads/". "{$title}"."{$uniqueName}" .".". "{$fileActualExt}");
 
-                 $insertStuff = "INSERT INTO gallery (title, about, uniqueName, image) VALUES (:title, :about, :uniqueName, :image)";
+                $insertStuff = "INSERT INTO gallery (title, about, uniqueName, image) VALUES (:title, :about, :uniqueName, :image)";
 
-            $statementStuff = $db->prepare($insertStuff);
-            
-            $temp = $uniqueName . $image_filename;
-            $statementStuff -> bindValue(':title', $title);
-            $statementStuff -> bindValue(':about', $about);
-             $statementStuff -> bindValue(':uniqueName', $uniqueName);
-               $statementStuff -> bindValue(':image', $temp);
-             // $statementStuff -> bindValue(':image', $image);
-            $statementStuff->execute();
+                //$insertStuff     = "UPDATE gallery  WHERE id = :id" ;
+
+
+                $statementStuff = $db->prepare($insertStuff);
+
+                $temp = $uniqueName . $image_filename;
+                $statementStuff -> bindValue(':title', $title);
+                $statementStuff -> bindValue(':about', $about);
+                $statementStuff -> bindValue(':uniqueName', $uniqueName);
+                $statementStuff -> bindValue(':image', $temp);
+                // $statementStuff -> bindValue(':image', $image);
+                $statementStuff->execute();
     
 
 
@@ -126,32 +119,55 @@
        <div id="wrapper">
         <h1>Humble brag Posts!</h1>
             <form method='post' enctype='multipart/form-data' action="gallery.php">
-                                <input type="text" name="title" placeholder="title" /><br>
-                <input type="text" name="about" placeholder="about" /><br>
+                                <input type="text" name="title" placeholder="title (required)" /><br>
+                <input type="text" name="about" placeholder="about " /><br>
              <!-- <label for='image'>Image</label> --><br>
              <input type='file' name='image' id='image'><br>
-             <input type='submit' name='submit' value='Upload Image'>
+             <input type='submit' name='submit' value='Submit!'>
             </form>    
             <?php if ($upload_error_detected): ?>
 
             <p>Error Number: <?= $_FILES['image']['error'] ?></p>
+<?php  if(isset($_POST['submit'] )): ?>
 
+<?php if(strlen($title) >= 1 && strlen($about) >= 1 ): ?>
+<?php
+
+         $insertStuff = "INSERT INTO gallery (title, about) VALUES (:title, :about)";
+
+         $statementStuff = $db->prepare($insertStuff);
+
+
+         $statementStuff -> bindValue(':title', $title);
+        $statementStuff -> bindValue(':about', $about);
+                   // $statementStuff -> bindValue(':image', $image);
+
+        $statementStuff->execute();
+?>
+<?php endif; ?>
+<?php   header("Location: gallery.php") ?>
+<?php endif; ?>
             <?php elseif ($image_upload_detected): ?>
             <?php if($anImage == 'png' || $anImage == 'gif' || $anImage == 'jpg' || $anImage == 'jpeg'):?>
+
            <?php endif ?>
             <?php endif ?>          
-       </div> 
+       </div>
 
-      <?php foreach($images as $img): ?>
+       <?php foreach($images as $img): ?>
         <h1><?= $img['title'] ?><a href="editGallery.php?id=<?=$img['id']?>">-edit</a></h1>
 
     <?php if($img['uniqueName'] != '' ): ?>
         <img src="uploads/<?= $img['image'] ?> " alt="<?= $img['uniqueName'] ?>" />
+
     <?php endif; ?>
                    
-                  <h1><?= $img['about'] ?></h1>
-      <?php endforeach ?>
-?>
+        <?php if($img['about'] != '' ): ?>
+            <h5><?= $img['about'] ?> </h5>                 
+        <?php endif; ?>
+
+       <?php endforeach ?>
+
 
 
 
@@ -159,4 +175,3 @@
  </html>
 
 
- 
