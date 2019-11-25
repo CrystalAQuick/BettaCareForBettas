@@ -15,19 +15,19 @@
 
     if(isset($_POST['submit'])){
 
-        // if(strlen($title) >= 1  && strlen($about) >= 1){
+        if(strlen($title) >= 1  && strlen($about) >= 1){
 
-        //     $insertStuff = "INSERT INTO gallery (title, about) VALUES (:title, :about";
+            $insertStuff = "INSERT INTO gallery (title, about) VALUES (:title, :about)";
 
-        //     $statementStuff = $db->prepare($insertStuff);
+            $statementStuff = $db->prepare($insertStuff);
             
 
-        //     $statementStuff -> bindValue(':title', $title);
-        //     $statementStuff -> bindValue(':about', $about);
-        //                // $statementStuff -> bindValue(':image', $image);
+            $statementStuff -> bindValue(':title', $title);
+            $statementStuff -> bindValue(':about', $about);
+                       // $statementStuff -> bindValue(':image', $image);
 
-        //     $statementStuff->execute();
-        // }
+            $statementStuff->execute();
+        }
         header("Location: gallery.php");
     }
 
@@ -120,9 +120,11 @@
      <head><title>File Upload Form</title></head>
       <link rel="stylesheet" type="text/css" href="styles/questions.css">
  <body>
+
          <?php include('components/navTemp.php'); ?>
 
        <div id="wrapper">
+        <h1>Humble brag Posts!</h1>
             <form method='post' enctype='multipart/form-data' action="gallery.php">
                                 <input type="text" name="title" placeholder="title" /><br>
                 <input type="text" name="about" placeholder="about" /><br>
@@ -141,12 +143,12 @@
        </div> 
 
       <?php foreach($images as $img): ?>
-        <h1><?= $img['title'] ?></h1>
+        <h1><?= $img['title'] ?><a href="editGallery.php?id=<?=$img['id']?>">-edit</a></h1>
 
-
-
+    <?php if($img['uniqueName'] != '' ): ?>
         <img src="uploads/<?= $img['image'] ?> " alt="<?= $img['uniqueName'] ?>" />
-                       
+    <?php endif; ?>
+                   
                   <h1><?= $img['about'] ?></h1>
       <?php endforeach ?>
 ?>

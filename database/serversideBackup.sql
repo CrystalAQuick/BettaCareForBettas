@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2019 at 03:30 PM
+-- Generation Time: Nov 07, 2019 at 02:25 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.1.31
 
@@ -96,22 +96,17 @@ INSERT INTO `bettavarieties` (`id`, `finType`, `pattern`, `color`, `info`) VALUE
 
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
-  `type` varchar(100) NOT NULL,
-  `typeId` varchar(100) NOT NULL
+  `type` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`id`, `type`, `typeId`) VALUES
-(1, 'general', 'general'),
-(2, 'lifespan', 'lifespan'),
-(3, 'livingConditions', 'livingConditions'),
-(16, 'goodToKnow', ''),
-(18, 'myths', ''),
-(19, 'spam', ''),
-(20, 'updatedCategory', '');
+INSERT INTO `categories` (`id`, `type`) VALUES
+(1, 'general'),
+(2, 'lifespan'),
+(3, 'livingConditions');
 
 -- --------------------------------------------------------
 
@@ -131,38 +126,13 @@ CREATE TABLE `faq` (
 --
 
 INSERT INTO `faq` (`id`, `question`, `answer`, `type`) VALUES
+(1, 'How long do betta fish live?', 'In ideal living conditions, a betta fish can live as long as 5 years. ', 'lifespan'),
+(2, 'Can betta fish live with other fish?', 'Yes, however it is not recommended for male betta fish to have addional tank mates as it can stress the betta fish out. Male betta fish tend to be more aggressive than females so if you are set on a community tank, look into purchasing a female betta instead.', 'livingConditions'),
 (3, 'What is the recommended tank size?', 'The ideal tank size for a single betta is 10 gallons. ', 'livingConditions'),
+(4, 'What do betta fish eat?', 'Betta fish should eat a high protien diet. Betta fish love to eat blood worms, brine shrimp, and betta pellets. ', 'lifestyle'),
 (5, 'How often should I clean my tank?', 'Small tanks that are under 2.5 gallons should be cleaned 4 - 5 times per week. Larger tanks need only to be cleaned once or twice every two weeks.', 'livingConditions'),
-(15, 'What is a betta fish?', 'Siamese fighting fish is a name often used to refer to betta fish.', 'general'),
-(23, 'Do betta fish need a heater?', 'Yes!Betta fish are a tropical species.', 'goodToKnow'),
-(26, 'How long do Betta fish live?', 'Betta fish typically live for&nbsp;up to 5 years, given the &lt;strong&gt;&lt;em&gt;proper&lt;/em&gt;&lt;/strong&gt; living conditions.', 'lifespan'),
-(45, 'Can a betta fish live in a vase?', '&lt;p&gt;&lt;strong&gt;NO&lt;/strong&gt;&lt;/p&gt;', 'myths'),
-(46, 'SPAM', '&lt;p&gt;SPAM&nbsp;&lt;/p&gt;', 'spam'),
-(47, 'general', '&lt;p&gt;&lt;strong&gt;this is a test&lt;/strong&gt;&lt;/p&gt;', 'general');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `gallery`
---
-
-CREATE TABLE `gallery` (
-  `id` int(11) NOT NULL,
-  `title` varchar(50) NOT NULL,
-  `about` varchar(100) NOT NULL,
-  `uniqueName` varchar(200) NOT NULL,
-  `image` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `gallery`
---
-
-INSERT INTO `gallery` (`id`, `title`, `about`, `uniqueName`, `image`) VALUES
-(108, 'Daily!', 'just a daily post!', '5ddb3d1b2d9b7', 'bettaFish.jpeg'),
-(125, 'hello', 'new', '5ddb4505d5f14', '5ddb4505d5f14bye.png'),
-(126, 'more test content', 'temp', '5ddb4531177b4', '5ddb4531177b4bye.png'),
-(127, 'test', 'test', '', '');
+(9, 'test', 'test', 'general'),
+(10, 'hello', 'hello', 'general');
 
 -- --------------------------------------------------------
 
@@ -176,29 +146,26 @@ CREATE TABLE `questions` (
   `content` varchar(1000) NOT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp(),
   `dateUpdated` date DEFAULT NULL,
-  `type` varchar(100) NOT NULL,
-  `image` varchar(200) NOT NULL,
-  `uniqueName` varchar(200) NOT NULL
+  `postId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `questions`
 --
 
-INSERT INTO `questions` (`id`, `title`, `content`, `date`, `dateUpdated`, `type`, `image`, `uniqueName`) VALUES
-(17, 'HELP! My betta fish is SICK', '&lt;p&gt;MY BABY IS SICK AND I DONT KNOW WHAT TO DO. PLEASE SEND HELP!!!!!&lt;/p&gt;', '2019-11-02 12:58:05', '2019-11-21', 'general', '', ''),
-(18, 'Live Plants vs Plastic?', 'What is better?', '2019-11-02 12:58:33', '2019-11-04', 'general', '', ''),
-(21, 'Betta and other fish?', 'What kind of fish are good to have with other fish?', '2019-11-02 13:09:51', '2019-11-04', 'general', '', ''),
-(24, 'Can betta fish learn tricks?', '  saw a youtube video where someone taught there betta how to do tricks? wanted to know how that was possible???? I have no idea! HEEELP!', '2019-11-02 13:12:52', '2019-11-05', 'general', '', ''),
-(25, 'Food to betta?', ' what is a good type of food to give to a betta...!!', '2019-11-02 13:13:23', '2019-11-05', 'general', '', ''),
-(26, 'What size of tank is good', 'HOW BIG of a tank should i purchase for my betta?', '2019-11-02 13:13:50', '2019-11-09', 'general', '', ''),
-(44, 'new test post  GEN CAT SPAM', '&lt;p&gt;&lt;strong&gt;HELLLO spam&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;em&gt;this is a test&lt;/em&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt;helllllooo&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt;THIS IS UPDATED&lt;a href=&quot;http://www.google.com&quot;&gt;. TEST&lt;/a&gt;&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;', '2019-11-09 13:21:03', '2019-11-21', 'general', '', ''),
-(45, 'SPAM CAT test question', '&lt;p&gt;&nbsp;spam spam spam test test test&lt;/p&gt;&lt;p&gt;should appear on spam when testing&lt;/p&gt;', '2019-11-09 13:59:17', '2019-11-13', 'spam', '', ''),
-(46, 'What time is it?', '&lt;p&gt;time to get a watch!!! &lt;strong&gt;HA&lt;/strong&gt;&lt;/p&gt;', '2019-11-09 21:03:00', '2019-11-11', 'spam', '', ''),
-(48, 'SPAM CAT', '&lt;ul&gt;&lt;li&gt;&lt;em&gt;&lt;strong&gt;SPAM SPAM SPAM&lt;/strong&gt;&lt;/em&gt;&lt;/li&gt;&lt;/ul&gt;', '2019-11-12 20:54:03', '2019-11-13', 'spam', '', ''),
-(49, 'This is a test question for replies', '&lt;p&gt;this is for testing purposes&lt;/p&gt;', '2019-11-20 09:31:59', NULL, 'spam', '', ''),
-(50, 'This is a test on November 22', '&lt;p&gt;test on november 22&lt;/p&gt;', '2019-11-22 08:31:30', NULL, 'updatedCategory', '', ''),
-(53, 'temp', '&lt;p&gt;temp&lt;/p&gt;', '2019-11-25 08:09:31', NULL, 'general', '', '');
+INSERT INTO `questions` (`id`, `title`, `content`, `date`, `dateUpdated`, `postId`) VALUES
+(9, 'Why is my betta a brat', 'My betta likes 2 eat everything. plz help', '2019-11-02 09:56:45', NULL, 0),
+(17, 'HELP! My betta fish is SICK', 'MY BABY IS SICK AND I DONT KNOW WHAT TO DO. PLEASE SEND HELP', '2019-11-02 12:58:05', NULL, 0),
+(18, 'Live Plants vs Plastic?', 'What is better?', '2019-11-02 12:58:33', '2019-11-04', 0),
+(21, 'Betta and other fish?', 'What kind of fish are good to have with other fish?', '2019-11-02 13:09:51', '2019-11-04', 0),
+(22, 'Betta sicknesses?', 'What kind of sicknesses are there?', '2019-11-02 13:10:47', '2019-11-04', 0),
+(23, 'Betta suggestions', 'First time betta owner. I dont know what to do. any suggestions on how to take care of the thing?', '2019-11-02 13:11:50', NULL, 0),
+(24, 'Can betta fish learn tricks?', '  saw a youtube video where someone taught there betta how to do tricks? wanted to know how that was possible???? I have no idea! HEEELP!', '2019-11-02 13:12:52', '2019-11-05', 0),
+(25, 'Food to betta?', ' what is a good type of food to give to a betta...!!', '2019-11-02 13:13:23', '2019-11-05', 0),
+(26, 'What size of tank is good', 'how big of a tank should i purchase for my betta?', '2019-11-02 13:13:50', NULL, 0),
+(27, 'First time betta owner help', '  I dont know what to do!!! THe fish is swimming backwards!??!?', '2019-11-02 13:14:34', '2019-11-05', 0),
+(30, 'How long until my betta is no longer a baby?', ' Asking for a friend.', '2019-11-03 10:05:39', '2019-11-06', 0),
+(36, 'Betta fish?', 'UPDATE??! Pompano snailfish eel-goby halfbeak golden shiner, &quot;golden loach goldfish.&quot; Tadpole fish: midshipman. Creek chub roundhead pearleye merluccid hake squarehead catfish. Carpsucker scup bichir squaretail smalltooth sawfish prickleback fathead sculpin queen danio loach Devario giant danio Black swallower bandfish porgy lionfish. Walleye zebra tilapia, bigeye squaretail sauger eagle ray lizardfish betta pikeblenny, soapfish! Waryfish blue catfish, alfonsino prickly shark, rohu, molly longjaw mudsucker, stargazer dorado North American freshwater catfish. Ridgehead Atlantic eel cisco wolffish ridgehead porgy common carp African lungfish sand stargazer! Dojo loach--powen--cobbler clownfish porbeagle shark dusky grouper torrent fish threadfin? Salamanderfish; yellowmargin triggerfish, madtom Moses sole trumpetfish pearl danio mudfish northern Stargazer emperor arowana anemonefish blue whiting, emperor oceanic flyingfish sleeper flying gurnard sarcastic fringehead. Sea bream ', '2019-11-05 08:25:48', '2019-11-06', 0);
 
 -- --------------------------------------------------------
 
@@ -217,43 +184,7 @@ CREATE TABLE `reply` (
 --
 
 INSERT INTO `reply` (`id`, `content`, `postId`) VALUES
-(29, 'id 49 i think', 49),
-(31, 'this is for 46', 46),
-(32, 'id 48 PLEASE WORK', 48),
-(34, 'sick! betta!', 17),
-(35, 'SIIIICK', 17),
-(36, 'new post gen cat test', 44),
-(39, 'test correct', 17),
-(40, 'fsfsdf', 18),
-(41, 'this is a test', 18),
-(42, 'this is for the captcha test', 17),
-(43, 'hidfsghkdhgkdhfgkhdkfhg', 17),
-(44, ' \r\n                         \r\n                   \r\n          \r\n\r\n              this is a test for a wrong captcha                  \r\n                \r\n          \r\n\r\n              ', 17),
-(45, ' \r\n                         \r\n                   \r\n          \r\ntemp\r\n                                \r\n                \r\n          \r\n\r\n              ', 17),
-(46, ' \r\n                         \r\n                   \r\n          \r\n\r\n              test comment                  \r\n                \r\n          \r\n\r\n              ', 50),
-(47, ' \r\n                         \r\n                   \r\n                         \r\n                   \r\n          \r\nthis is a test\r\n                                \r\n                \r\n          \r\n\r\n                                \r\n                \r\n          \r\n\r\n              ', 50);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `testusers`
---
-
-CREATE TABLE `testusers` (
-  `id` int(11) NOT NULL,
-  `username` varchar(200) NOT NULL,
-  `email` varchar(200) NOT NULL,
-  `password` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `testusers`
---
-
-INSERT INTO `testusers` (`id`, `username`, `email`, `password`) VALUES
-(1, 'first', 'first@snailmaail.com', '1234password'),
-(3, 'trashcan', 'someone@gmail.com', '$2y$10$ExwhJuT3kIH61GCK9G4SSuNhARn03W9fQnUJ2qA8LmvHcxIOUFodG'),
-(5, 'trashcan9999', 'someone@gmail.com', '$2y$10$BM9rXX7HeSWV3AYLKDBbj.XgIhRWynESPNvBGsKAV2FeRN.qnpOXS');
+(2, 'big dummy', 0);
 
 -- --------------------------------------------------------
 
@@ -264,26 +195,8 @@ INSERT INTO `testusers` (`id`, `username`, `email`, `password`) VALUES
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `email` varchar(200) NOT NULL
+  `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `username`, `password`, `email`) VALUES
-(1, 'ADMIN', '$2y$10$aSEcivtj089ezJvyznvpJuDIWrNCwOaIMAN.SxhVys5vW.eYOkAjC', 'admin@gmail.com'),
-(7, 'trashcan9999', '$2y$10$MhDF7AX.wgA.gFOG/h0YROnMig0AsfWEVHRlGfIGg8xMHiRNdbAOG', 'someone@gmail.com'),
-(8, 'frombrowser', '$2y$10$GvSd52eMbrgKhOqnj/uZb.nzX9ikb2p5K7rJp7VdGB76RGvke/nh.', 'browser@gmail.com'),
-(9, 'testnew', '$2y$10$/Nr3SpNEda4YOK51zYXT3OW8X4w7v1S2sl/id1kCdACNiMxEtHKO6', 'someone13@gmail.com'),
-(10, 'trashcan', '$2y$10$yoY6xNb6CTegI69rvJZDVudjk8s2zQfvkL5C22hIvD7x5Lc2mHerm', 'test@gmail.com'),
-(13, 'BOTTHEROBO', '$2y$10$Lofw6pR0mjk7mnrwD3FxNuk33X2LZn8fU5VBmZUscVOhmi2W3C/Ym', 'notabot@gmail.com'),
-(16, 'sickofprogramiing', '$2y$10$59KlRtR82SrgzyxLuRJh.OY/.PI52UetSltjhVs9/fvJlWbuLLJSK', 'tiredofthis@gmail.com'),
-(17, 'trashcan1993', '$2y$10$yXexsmHKdfcUE7P4QMUPKeB6td49ZDqWm9vca8FfdQzasOTjmi33y', 'testcase@gmail.com'),
-(18, 'TESTCASE999', '$2y$10$zSORvQ.PQ324RtoEll9ly.CepixXuTx31zFCMimWavVlUVCgo3aQK', 'thissucks@gmail.com'),
-(19, 'alan', '$2y$10$ZdMRNjbIHDf2md3Kjt5UGuFGAVFT2/hdwStByPb2lWNVxqyst8VcS', 'alan@gmail.com'),
-(20, 'collin', '$2y$10$ocOsztLf/6LhZ.EaJzrvne7fWZ6u7lJ7J3h1CB.69FJxxNvkeo/Gm', 'collin@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -308,12 +221,6 @@ ALTER TABLE `faq`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `gallery`
---
-ALTER TABLE `gallery`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `questions`
 --
 ALTER TABLE `questions`
@@ -323,12 +230,6 @@ ALTER TABLE `questions`
 -- Indexes for table `reply`
 --
 ALTER TABLE `reply`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `testusers`
---
-ALTER TABLE `testusers`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -351,43 +252,31 @@ ALTER TABLE `bettavarieties`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `faq`
 --
 ALTER TABLE `faq`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
-
---
--- AUTO_INCREMENT for table `gallery`
---
-ALTER TABLE `gallery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `reply`
 --
 ALTER TABLE `reply`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
-
---
--- AUTO_INCREMENT for table `testusers`
---
-ALTER TABLE `testusers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
