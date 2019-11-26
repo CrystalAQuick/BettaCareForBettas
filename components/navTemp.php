@@ -57,8 +57,8 @@
        <a href="viewAll.php">View All Questions</a>
       </div>
   </div>
-      <a href="gallery.php">Gallery</a>
-        <a href="testAPI.php">API Testing</a>
+      <a href="gallery.php">Humble Brag</a>
+        <a href="testAPI.php">Gallery</a>
   <a href="login.php">Login/Register</a>
     
     <div class="search-container">
