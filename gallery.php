@@ -118,6 +118,7 @@
 
        <div id="wrapper">
         <h1>Humble brag Posts!</h1>
+        <h5>A place to brag about your betta!</h5>
             <form method='post' enctype='multipart/form-data' action="gallery.php">
                                 <input type="text" name="title" placeholder="title (required)" /><br>
                 <input type="text" name="about" placeholder="about " /><br>

@@ -58,6 +58,7 @@
       </div>
   </div>
       <a href="gallery.php">Gallery</a>
+        <a href="testAPI.php">API Testing</a>
   <a href="login.php">Login/Register</a>
     
     <div class="search-container">
